@@ -1,0 +1,26 @@
+<ng-container *ngIf="ready; else loading">
+    <form [formGroup]="formGroup">
+      <div *ngFor="let field of fields; index as i">
+        <ng-container [ngSwitch]="field.type">
+          
+            <input  *ngSwitchCase="'text'"  formControlName="{{ field.name }}" type="text"/>
+            <input  *ngSwitchCase="'number'"  formControlName="{{ field.name }}" type="number"/>
+            <input  *ngSwitchCase="'date'"  formControlName="{{ field.name }}" type="date"/>
+  
+            <!-- <select
+              *ngSwitchCase="'select'"
+              formControlName="{{ field.name }}">
+              <option selected disabled value=null>Select</option>
+              <option *ngFor="let value of values[field.name] | async" value="{{value[field.valueField]}}" >{{value[field.labelField]}}</option>
+          </select> -->
+  
+          <!-- <app-tao-input *ngSwitchDefault formControlName="{{ field.name }}"></app-tao-input>> -->
+          
+        </ng-container>
+      </div>
+    </form>
+  </ng-container>
+  
+  <ng-template #loading>Loading...</ng-template>
+  
+  <!-- {{parentValues | a | json}} -->
