@@ -24,7 +24,8 @@ import { Field, Page } from '../page';
 export class DynamicFormComponent extends BaseControlComponent implements OnInit {
 
   @Input() page!: Page;
-  fields!: Field[];
+  
+  @Input() fields!: Field[];
 
   ready = false;
   formGroup!: FormGroup;
@@ -36,10 +37,14 @@ export class DynamicFormComponent extends BaseControlComponent implements OnInit
     super();
   }
   ngOnInit(): void {
-    this.fields = this.dynamicFormService.getFields(this.page);
+    if(this.page) {
+      this.fields = this.dynamicFormService.getFields(this.page);
+    }
     this.formGroup = this.dynamicFormService.buildFormGroup(this.fields);
-    this.ready=true;
     this.formGroup.valueChanges.subscribe(value=> this.onChange(value));
+    this.ready=true;
+    console.log(this.fields);
+    
   }
 
   writeValue(obj: any): void {

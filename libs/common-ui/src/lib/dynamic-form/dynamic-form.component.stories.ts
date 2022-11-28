@@ -4,13 +4,14 @@ import { DynamicFormViewComponent } from '../dynamic-form-view/dynamic-form-view
 import { HttpClientModule } from '@angular/common/http';
 import { Page } from '../page';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RepeaterComponent } from '../repeater/repeater.component';
 
 export default {
     title: 'DynamicFormComponent',
     component: DynamicFormComponent,
     decorators: [
         moduleMetadata({
-            declarations: [DynamicFormViewComponent],
+            declarations: [DynamicFormViewComponent,RepeaterComponent],
             imports: [HttpClientModule, FormsModule, ReactiveFormsModule],
         }),
     ],

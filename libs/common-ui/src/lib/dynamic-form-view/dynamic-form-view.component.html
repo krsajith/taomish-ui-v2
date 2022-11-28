@@ -1,11 +1,17 @@
 <form [formGroup]="formGroup">
     <div *ngFor="let field of fields; index as i">
       <ng-container [ngSwitch]="field.type">
-        
           <input  *ngSwitchCase="'text'"  formControlName="{{ field.name }}" type="text"/>
           <input  *ngSwitchCase="'number'"  formControlName="{{ field.name }}" type="number"/>
           <input  *ngSwitchCase="'date'"  formControlName="{{ field.name }}" type="date"/>
+          <select *ngSwitchCase="'select'" formControlName="{{ field.name }}">
+              <option value="one">one</option>
+              <option value="two">two</option>
+          </select>
+          
+
           <tui-repeater *ngSwitchCase="'repeater'" formControlName="{{ field.name }}"   [fields]="field.fields || []" > </tui-repeater>
+          <tui-form *ngSwitchCase="'inputGroup'" formControlName="{{ field.name }}"   [fields]="field.fields || []" > </tui-form>
       </ng-container>
     </div>
   </form>
