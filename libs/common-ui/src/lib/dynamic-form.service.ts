@@ -22,7 +22,7 @@ export class DynamicFormService {
 
   buildFormGroupFromFields(fields: Field[]): FormGroup {
     const formGroup = new FormGroup({});
-    fields.filter(field=> !['inputGroup','repeater'].includes(field.type)).forEach(field => {
+    fields.forEach(field => {
       const formControl = new FormControl();
       formGroup.addControl(field.name, formControl);
     })

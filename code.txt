@@ -1,0 +1,2 @@
+
+.filter(field=> !['inputGroup','repeater'].includes(field.type))

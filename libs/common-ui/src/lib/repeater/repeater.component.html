@@ -1,1 +1,8 @@
-<p>repeater works!</p>
+<!-- {{fields | json}} -->
+<div class="pt-5" [formGroup]="parent">
+    <div formArrayName="formArray">
+        <ng-container *ngFor="let group of groups;let i=index">
+            <tui-dynamic-form-view  [formGroup]="group" [fields]="fields"></tui-dynamic-form-view>
+        </ng-container>
+    </div>
+</div>

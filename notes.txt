@@ -3,6 +3,11 @@ npx nx g @nrwl/angular:lib common-ui
 
 npx nx g service dynamic-form --project=common-ui
 
+npx nx g c dynamic-form-view --project=common-ui --export
 npx nx g c dynamic-form --project=common-ui --export
 npx nx g c repeater --project=common-ui --export
 npx nx g c input-group --project=common-ui --export
+
+
+nx g @nrwl/angular:storybook-configuration common-ui
+nx storybook common-ui
