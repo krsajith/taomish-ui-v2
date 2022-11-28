@@ -5,7 +5,7 @@
           <input  *ngSwitchCase="'text'"  formControlName="{{ field.name }}" type="text"/>
           <input  *ngSwitchCase="'number'"  formControlName="{{ field.name }}" type="number"/>
           <input  *ngSwitchCase="'date'"  formControlName="{{ field.name }}" type="date"/>
-          <tui-repeater *ngSwitchCase="'repeater'" formControlName="{{ field.name }}"   [fields]="field.fields" > </tui-repeater>
+          <tui-repeater *ngSwitchCase="'repeater'" formControlName="{{ field.name }}"   [fields]="field.fields || []" > </tui-repeater>
       </ng-container>
     </div>
   </form>

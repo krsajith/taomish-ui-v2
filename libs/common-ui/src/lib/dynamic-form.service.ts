@@ -17,6 +17,15 @@ export class DynamicFormService {
     if (page.sections) {
       page.sections.forEach(section => fields = [...fields, ...section.fields]);
     }
+    fields.forEach(field=>{
+      if (field.type==='repeater' && field.reference && page.formGroups) {
+        field.fields = page.formGroups[field.reference];
+      }
+
+      if (field.type==='inputGroup' && field.reference && page.inputGroups) {
+        field.fields = page.inputGroups[field.reference];
+      }
+    });
     return fields;
   }
 

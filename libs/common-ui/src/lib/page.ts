@@ -24,6 +24,7 @@ export interface Field {
     reference?: string;
     store?:string;
     value?:string;
+    fields?:Field[]
 }
 
 
