@@ -33,6 +33,9 @@ export class DynamicFormService {
     const formGroup = new FormGroup({});
     fields.forEach(field => {
       const formControl = new FormControl();
+      if(field.topic){
+        formControl.valueChanges.subscribe(value=> console.log(field.topic,value))
+      }
       formGroup.addControl(field.name, formControl);
     })
     return formGroup;

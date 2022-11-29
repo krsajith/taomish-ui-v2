@@ -17,6 +17,11 @@ export interface Section {
     fields: Field[];
 }
 
+export interface TopicListener {
+    topic: string;
+    function: string;
+}
+
 export interface Field {
     name: string;
     type: string;
@@ -24,7 +29,9 @@ export interface Field {
     reference?: string;
     store?:string;
     value?:string;
-    fields?:Field[]
+    fields?:Field[];
+    topicListener?:TopicListener[];
+    topic?:string;
 }
 
 

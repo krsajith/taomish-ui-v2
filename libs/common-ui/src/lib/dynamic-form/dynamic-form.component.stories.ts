@@ -84,12 +84,16 @@ const page: Page = {
                 {
                     "name": "invoiceDate",
                     "label": "Invoice Date",
-                    "type": "date"
+                    "type": "date",
+                    "topic":"invoice-date.change"
                 },
                 {
                     "name": "amount",
                     "type": "inputGroup",
-                    "reference": "amount"
+                    "reference": "amount",
+                    "topicListener":[
+                        { topic:"invoice-date.change" , function:"function1"}
+                    ]
                 }
             ]
         },
