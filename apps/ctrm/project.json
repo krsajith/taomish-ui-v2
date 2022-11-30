@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/ctrm/src",
-  "prefix": "taomish-ui-v2",
+  "prefix": "tui",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",

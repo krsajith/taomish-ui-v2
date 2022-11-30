@@ -6,6 +6,7 @@ import { InputGroupComponent } from './input-group/input-group.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DynamicFormViewComponent } from './dynamic-form-view/dynamic-form-view.component';
+import { GridComponent } from './grid/grid.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],
@@ -14,12 +15,14 @@ import { DynamicFormViewComponent } from './dynamic-form-view/dynamic-form-view.
     RepeaterComponent,
     InputGroupComponent,
     DynamicFormViewComponent,
+    GridComponent,
   ],
   exports: [
     DynamicFormComponent,
     RepeaterComponent,
     InputGroupComponent,
     DynamicFormViewComponent,
+    GridComponent,
   ],
 })
 export class CommonUiModule {}

@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/common-ui/src",
-  "prefix": "taomish-ui-v2",
+  "prefix": "tui",
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
