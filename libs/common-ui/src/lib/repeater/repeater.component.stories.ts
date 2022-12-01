@@ -3,7 +3,7 @@ import { Field } from '../page';
 import { RepeaterComponent } from './repeater.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { DynamicFormViewComponent } from '../dynamic-form-view/dynamic-form-view.component';
+import { DynamicFormViewComponent } from '../components/dynamic-form-view/dynamic-form-view.component';
 
 export default {
   title: 'RepeaterComponent',
@@ -22,8 +22,8 @@ const Template: Story<RepeaterComponent> = (args: RepeaterComponent) => ({
   <tui-repeater #repeater ngModel name="userInput" [fields]="fields" > </tui-repeater>
   <button (click)="repeater.add()">Add</button>
   <p class="mt-3" >Form value: {{ f.value | json }}</p>
-                 </form> 
-  `  
+                 </form>
+  `
 });
 
 

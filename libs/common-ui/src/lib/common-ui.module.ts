@@ -1,25 +1,30 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
+import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { RepeaterComponent } from './repeater/repeater.component';
-import { InputGroupComponent } from './input-group/input-group.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { DynamicFormViewComponent } from './dynamic-form-view/dynamic-form-view.component';
+import { DynamicFormViewComponent } from './components/dynamic-form-view/dynamic-form-view.component';
+import { InputComponent } from './components/input/input.component';
+import { SelectComponent } from './components/select/select.component';
+import { FilePickerComponent } from './components/file-picker/file-picker.component';
+import { NestedSelectComponent } from './components/nested-select/nested-select.component';
+import { MultiSelectComponent } from './components/multi-select/multi-select.component';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],
   declarations: [
     DynamicFormComponent,
     RepeaterComponent,
-    InputGroupComponent,
     DynamicFormViewComponent,
+    InputComponent,
+    SelectComponent,
+    FilePickerComponent,
+    NestedSelectComponent,
+    MultiSelectComponent,
+    SearchFilterPipe
   ],
-  exports: [
-    DynamicFormComponent,
-    RepeaterComponent,
-    InputGroupComponent,
-    DynamicFormViewComponent,
-  ],
+  exports: [DynamicFormComponent, RepeaterComponent, DynamicFormViewComponent],
 })
 export class CommonUiModule {}

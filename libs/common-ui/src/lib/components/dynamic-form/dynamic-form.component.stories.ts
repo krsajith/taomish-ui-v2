@@ -2,9 +2,9 @@ import { moduleMetadata, Story, Meta } from '@storybook/angular';
 import { DynamicFormComponent } from './dynamic-form.component';
 import { DynamicFormViewComponent } from '../dynamic-form-view/dynamic-form-view.component';
 import { HttpClientModule } from '@angular/common/http';
-import { Page } from '../page';
+import { Page } from '../../page';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RepeaterComponent } from '../repeater/repeater.component';
+import { RepeaterComponent } from '../../repeater/repeater.component';
 
 export default {
     title: 'DynamicFormComponent',
@@ -22,7 +22,7 @@ const Template: Story<DynamicFormComponent> = (args: DynamicFormComponent) => ({
     template: `<form #f="ngForm">
     <tui-form ngModel name="userInput" [page]="page" > </tui-form>
     <p class="mt-3" >Form value: {{ f.value | json }}</p>
-                   </form> 
+                   </form>
     `
 });
 

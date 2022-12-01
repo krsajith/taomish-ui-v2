@@ -1,13 +1,13 @@
 
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import {  FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { StoreService } from '../store/store.service';
-import { Store } from '../store/store';
+import { StoreService } from '../../store/store.service';
+import { Store } from '../../store/store';
 
 import { Observable } from 'rxjs';
-import { BaseControlComponent } from '../base-control/base-control.component';
-import { DynamicFormService } from '../dynamic-form.service';
-import { Field, Page } from '../page';
+import { BaseControlComponent } from '../../base-control/base-control.component';
+import { DynamicFormService } from '../../dynamic-form.service';
+import { Field, Page } from '../../page';
 
 @Component({
   selector: 'tui-form',
@@ -19,12 +19,12 @@ import { Field, Page } from '../page';
       useExisting: forwardRef(() => DynamicFormComponent),
       multi: true,
     },
-  ],  
+  ],
 })
 export class DynamicFormComponent extends BaseControlComponent implements OnInit {
 
   @Input() page!: Page;
-  
+
   @Input() fields!: Field[];
 
   ready = false;
@@ -44,7 +44,7 @@ export class DynamicFormComponent extends BaseControlComponent implements OnInit
     this.formGroup.valueChanges.subscribe(value=> this.onChange(value));
     this.ready=true;
     console.log(this.fields);
-    
+
   }
 
   writeValue(obj: any): void {

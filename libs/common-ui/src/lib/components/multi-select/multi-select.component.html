@@ -1,0 +1,39 @@
+<div (clickAway)="hideDropDown()">
+  <div (click)="showDropDown()" type="button" #target class="multi-select-wrapper">
+    <div class="multi-select-items">
+      <ng-container *ngFor="let item of selected(selectedLabel)">
+        <span class="selected-item rounded"> {{item}}</span>
+      </ng-container>
+    </div>
+    <div class="multi-select-dropdoen-icon">
+      <div *ngIf="selectedOptions.selected.length!=0" class="select-item-counter">
+        <span >{{selectedOptions.selected.length}}</span>
+        <svg width="11" height="10" viewBox="0 0 11 10" fill="none" class=" mx-1 place-self-center cursor-pointer h-5 w-3"
+          (click)="clearall()">
+          <path
+            d="M10.2998 1.00714L9.29265 0L5.2998 3.99286L1.30694 0L0.299805 1.00714L4.29266 5L0.299805 8.99285L1.30694 9.99999L5.2998 6.00714L9.29265 9.99999L10.2998 8.99285L6.30694 5L10.2998 1.00714Z"
+            fill="#767676" />
+        </svg>
+      </div>
+      <svg [ngClass]="{'rotate-180': isOpen}"
+        width="11" height="7" viewBox="0 0 11 7" fill="none">
+        <path d="M1.5 1.5L5.5 5.5L9.5 1.5" stroke="#333333" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" />
+      </svg>
+    </div>
+  </div>
+  <div class="option-wrapper" #dropdown >
+    <div class="option-serch">
+      <!-- <input class="" type="checkbox" id="checkAll" (change)="checkAll($event)" /> -->
+      <input type="text" placeholder="Search" [(ngModel)]="searchValue">
+    </div>
+    <div class="option-list">
+      <ng-container *ngFor="let option of _options | searchFilter:searchValue">
+        <div class="option">
+          <input type="checkbox" [checked]="selectedOptions.isSelected(option)"(change)="toggle(option)" />
+          <span>{{ option[label] }}</span>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

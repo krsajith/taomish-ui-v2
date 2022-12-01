@@ -1,0 +1,13 @@
+<div class="select-wrapper rounded ">
+  <div class=" bg-gray-2 rounded">
+    <select formControlName="data" class="selectIcon onSelect rounded ">
+      <option value="">Select </option>
+      <ng-container *ngFor="let item of optionData">
+        <option [value]="item.value" class="o" >{{item.label}}</option>
+      </ng-container>
+    </select>
+  </div>
+</div>
+
+
+<!-- (click)="[getWidth(),isView=!isView]" -->

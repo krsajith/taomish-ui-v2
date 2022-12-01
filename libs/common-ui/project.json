@@ -5,6 +5,9 @@
   "sourceRoot": "libs/common-ui/src",
   "prefix": "taomish-ui-v2",
   "targets": {
+    "build": {
+      "styles": ["libs/common-ui/src/lib/styles/style.css"]
+    },
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],

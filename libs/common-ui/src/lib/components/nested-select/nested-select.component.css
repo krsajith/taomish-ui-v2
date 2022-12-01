@@ -1,0 +1,121 @@
+.nested-select-wrapper{
+  width: 100%;
+  border: 0.062rem solid #A7A7A7;
+  background-color: #FCFCFC;
+  flex-direction: column;
+  box-sizing: border-box;
+  color: #333333;
+  font-weight: 400;
+  font-size:0.81rem;
+}
+
+.nested-select-wrapper:hover{
+  border-color: #333333;
+}
+
+.nested-select-wrapper:focus{
+  border-color: #333333;
+}
+
+.nested-select-div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 0.25rem;
+  padding-right: 0.7rem;
+  cursor: pointer;
+}
+
+.nested-select-input{
+  padding: 0.78rem;
+  appearance: none;
+  width: 100%;
+  border: 0px;
+  cursor: pointer;
+}
+
+.nested-select-input:focus{
+  outline: none;
+  border: 0px solid white;
+}
+
+
+.option-wrapper{
+  position: absolute;
+  z-index: 10;
+  border-radius: 0.25rem;
+  border-width: 1px;
+
+}
+
+.option-wrapper-section{
+  overflow-x: hidden;
+  overflow: scroll;
+  background-color: #ffffff;
+  max-height: 13rem;
+  border: 1px solid #A7A7A7;
+  border-bottom-right-radius: 0.375rem;
+  border-bottom-left-radius: 0.375rem;
+}
+
+.option-wrapper-div{
+  display: flex;
+  padding: 0.5rem;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  cursor: pointer;
+}
+
+.option-wrapper-div:hover{
+  background-color: #EDEDED;
+}
+
+.option-wrapper-div svg{
+  padding: 0.5rem;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 100%;
+}
+
+.option-wrapper-div svg:hover{
+  background-color: #FBFBFB;
+}
+
+.rounded{
+  border-radius: 0.25rem;
+}
+
+.parent-option{
+  font-size: 0.81rem;
+  line-height: 1.25rem;
+  margin-left: 0.5rem;
+}
+
+.child-option-div{
+  padding-top: 0.5rem;
+  padding-bottom:0.5rem;
+  padding-left: 3.5rem;
+  color: #4B5563;
+  font-size: 0.81rem;
+  line-height: 1.25rem;
+  cursor: pointer;
+}
+
+
+.child-option-div:hover{
+  background-color: #EDEDED;
+}
+
+::-webkit-scrollbar{
+  height: 0vw;
+  width: 0.4vw;
+}
+
+::-webkit-scrollbar-track{
+  background-color: white;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: rgb(173, 171, 171);
+}

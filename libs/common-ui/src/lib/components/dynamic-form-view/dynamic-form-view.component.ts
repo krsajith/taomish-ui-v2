@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Field } from '../page';
+import { Constant } from '../../domain/constant';
+import { Field } from '../../page';
 
 @Component({
   selector: 'tui-dynamic-form-view',
@@ -10,4 +11,6 @@ import { Field } from '../page';
 export class DynamicFormViewComponent {
   @Input() formGroup!:FormGroup;
   @Input() fields!:Field[];
+
+  const=Constant
 }

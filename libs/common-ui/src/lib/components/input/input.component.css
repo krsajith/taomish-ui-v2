@@ -1,0 +1,35 @@
+*{
+  padding: 0px;
+  margin: 0px;
+}
+.input{
+  width: 100%;
+  padding: 0.72rem;
+  border: 0.062rem solid #A7A7A7;
+  border-radius: 0.25rem;
+  appearance: none;
+  background-color: #FCFCFC;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  color: #333333;
+  font-weight: 400;
+  font-size:0.81rem;
+  line-height:0.93rem;
+  text-align: left;
+}
+
+.input[type=number]{
+  text-align: right;
+}
+
+.input:hover{
+  border-color: #333333;
+}
+
+.input:focus{
+  outline: none;
+  border-color: #333333;
+}
+
+
