@@ -1,30 +1,31 @@
-class Car {
-    light: Light;
-    break: Break;
+import { filter, Observable, Subject } from "rxjs";
 
-    constructor() {
-        this.light = new this.light()
-        this.break = new this.break()
+export interface Notification {
+    type: string;
+    payload: unknown;
+}
+
+class PubSub {
+    subject = new Subject<Notification>();
+    observable = this.subject.asObservable();
+
+    publish(notification: Notification) {
+        this.subject.next(notification);
+    }
+
+    subscribe(type: string) {
+        return this.observable.pipe(filter(n => n.type === type));
     }
 }
 
 
-class Car2 {
-    light: Light;
-    break: Break;
+const ps = new PubSub();
 
-    constructor() {
-        this.light = new this.light()
-        this.break = new this.break()
-    }
-}
+ps.subscribe('a').subscribe(notification => {
+    console.log(notification);
+});
 
+ps.publish({ type: 'a', payload: 'hello' });
 
-class Car {
-    light: Light;
-    break: Break;
+ps.publish({ type: 'b', payload: 'hello' });
 
-    run(){
-        
-    }
-}

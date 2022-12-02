@@ -2686,7 +2686,7 @@ const data = [
 
 const Template: Story<GridComponent> = (args: GridComponent) => ({
   props: args,
-  template: `<tui-grid [cols]="cols"> </tui-grid>`  
+  template: `<div style="width:50vw;height:50vh">  <tui-grid [cols]="cols" [data]="data"> </tui-grid> </div>`  
 });
 
 export const Primary = Template.bind({});

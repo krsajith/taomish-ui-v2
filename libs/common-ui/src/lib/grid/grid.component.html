@@ -1,1 +1,9 @@
-<p *ngFor="let col of cols">{{col.name}}</p>
+<div class="grid-container">
+<div #grid class="tui-grid">
+    <span class="col header" *ngFor="let col of cols">{{col.name}}</span>
+    <ng-container *ngFor="let item of data">
+        <span class="col" *ngFor="let col of cols">{{item[col.name]}}</span>
+    </ng-container>
+
+</div>
+</div>
