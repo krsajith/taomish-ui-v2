@@ -13,19 +13,20 @@ class PubSub {
         this.subject.next(notification);
     }
 
-    subscribe(type: string) {
-        return this.observable.pipe(filter(n => n.type === type));
+    subscribe(topics: string[]) {
+        return this.observable.pipe(filter(n => topics.includes(n.type)));
     }
 }
 
 
 const ps = new PubSub();
 
-ps.subscribe('a').subscribe(notification => {
+ps.subscribe(['invoiceItem.rate','invoiceItem.qty']).subscribe(notification => {
+    notification.form.patch(10);
     console.log(notification);
 });
 
-ps.publish({ type: 'a', payload: 'hello' });
+ps.publish({ type: 'invoiceItem.rate', payload: {form:'f1'} });
 
-ps.publish({ type: 'b', payload: 'hello' });
+ps.publish({ type: 'invoiceItem.qty', payload: {form:'f1'} });
 

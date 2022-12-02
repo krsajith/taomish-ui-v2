@@ -43,10 +43,16 @@ const page: Page = {
             },
             {
                 "name": "qty",
-                "type": "number"
+                "type": "number",
+                "topic":"invoiceItem.qty"
             },
             {
                 "name": "rate",
+                "type": "number",
+                "topic":"invoiceItem.rate"
+            },
+            {
+                "name": "total",
                 "type": "number"
             }
         ]
@@ -91,9 +97,6 @@ const page: Page = {
                     "name": "amount",
                     "type": "inputGroup",
                     "reference": "amount",
-                    "topicListener":[
-                        { topic:"invoice-date.change" , function:"function1"}
-                    ]
                 }
             ]
         },

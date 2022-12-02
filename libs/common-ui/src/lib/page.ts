@@ -30,7 +30,6 @@ export interface Field {
     store?:string;
     value?:string;
     fields?:Field[];
-    topicListener?:TopicListener[];
     topic?:string;
 }
 
