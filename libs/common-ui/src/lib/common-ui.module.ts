@@ -11,6 +11,7 @@ import { FilePickerComponent } from './components/file-picker/file-picker.compon
 import { NestedSelectComponent } from './components/nested-select/nested-select.component';
 import { MultiSelectComponent } from './components/multi-select/multi-select.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import { GridComponent } from './components/grid/grid.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],
@@ -23,7 +24,15 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
     FilePickerComponent,
     NestedSelectComponent,
     MultiSelectComponent,
-    SearchFilterPipe
+    SearchFilterPipe,
+    DynamicFormViewComponent,
+    GridComponent
+  ],
+  exports: [
+    DynamicFormComponent,
+    RepeaterComponent,
+    DynamicFormViewComponent,
+    GridComponent,
   ],
   exports: [DynamicFormComponent, RepeaterComponent, DynamicFormViewComponent],
 })

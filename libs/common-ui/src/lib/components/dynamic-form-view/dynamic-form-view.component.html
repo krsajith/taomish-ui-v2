@@ -1,6 +1,5 @@
 <form [formGroup]="formGroup"  >
-    <div *ngFor="let field of fields; index as i">
-      <ng-container [ngSwitch]="field.type">
+      <ng-container *ngFor="let field of fields; index as i" [ngSwitch]="field.type">
 
           <tui-input *ngSwitchCase="'input'"  formControlName="{{ field.name }}" [inputTypex]="field.inputType" [placeholder]="field.label"></tui-input>
 
@@ -11,11 +10,9 @@
               <option value="two">two</option>
           </select> -->
 
-
-
-          <tui-repeater *ngSwitchCase="'repeater'" formControlName="{{ field.name }}"   [fields]="field.fields || []" > </tui-repeater>
+          <tui-repeater class="items" *ngSwitchCase="'repeater'" formControlName="{{ field.name }}"   [fields]="field.fields || []" > </tui-repeater>
           <tui-form *ngSwitchCase="'inputGroup'" formControlName="{{ field.name }}"   [fields]="field.fields || []" > </tui-form>
 
       </ng-container>
-    </div>
+
   </form>

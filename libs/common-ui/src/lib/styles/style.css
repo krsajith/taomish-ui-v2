@@ -47,7 +47,6 @@
     --grey-2:#363636;
     --grey-1:#333333;
     --black:#000000;
-    --red:#df1414;
 
     --space-1: 0.3125rem;
     --space-2: 0.5rem;
@@ -81,12 +80,10 @@
     --box-shadow-1: 0px 1px 10px rgba(0, 0, 0, 0.160784);
     --box-shadow-2: 0px 3px 3px rgba(0, 0, 0, 0.160784);
     --drop-shadow-1:drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.160784));
-
-    --radius:4px;
 }
 
 
-/*
+
 
 .box {
     width: 10rem;
@@ -152,3 +149,18 @@ input:focus {
     border-top-right-radius: 4px;
 }
  */
+.input-group {
+    display: flex;
+}
+
+
+.invoice-form {
+    display: grid;
+    flex-direction: row;
+    gap: 1rem;
+    grid-template-columns: repeat(3,1fr);
+}
+
+.invoice-form .items {
+    background-color: #6D6B8B;
+}

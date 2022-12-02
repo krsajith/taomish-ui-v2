@@ -1,0 +1,21 @@
+
+.tui-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--var-col-count), auto)
+}
+
+.tui-grid .col {
+    color: blueviolet;
+    white-space: nowrap;
+    padding: 0.25rem 0.5rem;
+}
+
+.grid-container {
+    width: 100%;
+    overflow: auto;
+    height: 100%;
+}
+
+.tui-grid .header {
+    background-color: cornflowerblue;
+}

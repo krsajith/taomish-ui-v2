@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/common-ui/src",
-  "prefix": "taomish-ui-v2",
+  "prefix": "tui",
   "targets": {
     "build": {
       "styles": ["libs/common-ui/src/lib/styles/style.css"]
@@ -44,6 +44,7 @@
       "outputs": ["{options.outputDir}"],
       "options": {
         "outputDir": "dist/storybook/common-ui",
+        "styles": ["libs/common-ui/src/lib/styles/style.css"],        
         "configDir": "libs/common-ui/.storybook",
         "browserTarget": "common-ui:build-storybook",
         "compodoc": false
