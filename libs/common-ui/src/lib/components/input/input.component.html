@@ -1,2 +1,3 @@
-  <input [type]="inputTypex"  class="input">
-
+<div [formGroup]="parent">
+  <input [type]="inputTypex" formControlName="text"  class="input" placeholder="Enter {{placeholder}}">
+</div>

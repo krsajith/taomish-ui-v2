@@ -19,10 +19,11 @@ import { Constant } from '../../domain/constant';
 export class InputComponent extends BaseControlComponent implements OnInit {
 
   @Input() inputTypex:any = Constant.NUMBER;
+  @Input() placeholder:any=''
 
-  // parent = new FormGroup({
-    // text: new FormControl('')
-  // })
+  parent = new FormGroup({
+    text: new FormControl('')
+  })
 
   const=Constant;
 
@@ -31,19 +32,20 @@ export class InputComponent extends BaseControlComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.text.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(resp=>{
-    //   this.onChange(resp);
-    // })
+    this.text.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(resp=>{
+      this.onChange(resp);
+    })
   }
 
-  // get text():FormControl{
-  //   return this.parent.get('text') as FormControl;
-  // }
+  get text():FormControl{
+    return this.parent.get('text') as FormControl;
+  }
 
 
   writeValue(obj: any): void {
+    this.text.patchValue("")
     if(obj){
-      // this.parent.patchValue(obj)
+      this.parent.patchValue(obj)
     }
   }
 

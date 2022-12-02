@@ -4,6 +4,7 @@ export interface Page {
     fields: Field[];
     sections: Section[];
     lists: { [key: string]: Option[] };
+    colSpan:string;
 }
 
 export interface Option {
@@ -25,6 +26,7 @@ export interface TopicListener {
 export interface Field {
     name: string;
     type: string;
+    inputType?:string;
     label?: string;
     reference?: string;
     store?:string;

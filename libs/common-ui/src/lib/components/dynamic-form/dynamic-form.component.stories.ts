@@ -5,13 +5,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { Page } from '../../page';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RepeaterComponent } from '../../repeater/repeater.component';
+import { InputComponent } from '../input/input.component';
+import { SelectComponent } from '../select/select.component';
 
 export default {
     title: 'DynamicFormComponent',
     component: DynamicFormComponent,
     decorators: [
         moduleMetadata({
-            declarations: [DynamicFormViewComponent,RepeaterComponent],
+            declarations: [DynamicFormViewComponent,RepeaterComponent,InputComponent,SelectComponent],
             imports: [HttpClientModule, FormsModule, ReactiveFormsModule],
         }),
     ],
@@ -35,6 +37,7 @@ const Template: Story<DynamicFormComponent> = (args: DynamicFormComponent) => ({
 
 
 const page: Page = {
+    "colSpan":"col-span-3",
     "formGroups": {
         "invoiceItem": [
             {
@@ -55,7 +58,8 @@ const page: Page = {
         "amount": [
             {
                 "name": "amount",
-                "type": "number"
+                "type": "input",
+                "inputType":"numer"
             },
             {
                 "name": "currency",
@@ -79,21 +83,24 @@ const page: Page = {
                 {
                     "name": "invoiceNumber",
                     "label": "Invoice Number",
-                    "type": "text"
+                    "type": "input",
+                    "inputType":"text",
                 },
                 {
                     "name": "invoiceDate",
                     "label": "Invoice Date",
-                    "type": "date",
+                    "type": "input",
+                    "inputType":"date",
                     "topic":"invoice-date.change"
                 },
                 {
                     "name": "amount",
                     "type": "inputGroup",
+                    "label": "Invoice Date",
                     "reference": "amount",
-                    "topicListener":[
-                        { topic:"invoice-date.change" , function:"function1"}
-                    ]
+                    // "topicListener":[
+                    //     { topic:"invoice-date.change" , function:"function1"}
+                    // ]
                 }
             ]
         },

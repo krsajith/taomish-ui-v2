@@ -1,7 +1,4 @@
-*{
-  padding: 0px;
-  margin: 0px;
-}
+
 .input{
   width: 100%;
   padding: 0.72rem;
@@ -10,7 +7,6 @@
   appearance: none;
   background-color: #FCFCFC;
   display: flex;
-  flex-direction: column;
   box-sizing: border-box;
   color: #333333;
   font-weight: 400;
