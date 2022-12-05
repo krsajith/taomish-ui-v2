@@ -1,5 +1,6 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { takeUntil } from 'rxjs';
 import { BaseControlComponent } from '../../base-control/base-control.component';
 
 @Component({
@@ -23,6 +24,9 @@ export class SelectComponent extends BaseControlComponent implements OnInit{
   })
 
   ngOnInit(): void {
+    this.data.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(resp=>{
+      this.onChange(resp)
+    })
   }
 
   get data():FormControl{

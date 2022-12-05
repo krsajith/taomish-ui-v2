@@ -18,4 +18,7 @@
 
 .tui-grid .header {
     background-color: cornflowerblue;
+    top: 0;
+    position: sticky;
 }
+

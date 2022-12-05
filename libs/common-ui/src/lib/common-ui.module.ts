@@ -12,6 +12,9 @@ import { NestedSelectComponent } from './components/nested-select/nested-select.
 import { MultiSelectComponent } from './components/multi-select/multi-select.component';
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 import { GridComponent } from './components/grid/grid.component';
+import { TableComponent } from './components/table/table.component';
+import { TableDirective } from './directives/table.directive';
+import { TableColumnDirective } from './directives/table-column.directive';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],
@@ -26,14 +29,19 @@ import { GridComponent } from './components/grid/grid.component';
     MultiSelectComponent,
     SearchFilterPipe,
     DynamicFormViewComponent,
-    GridComponent
+    GridComponent,
+    TableComponent,
+    TableDirective,
+    TableColumnDirective,
   ],
   exports: [
     DynamicFormComponent,
     RepeaterComponent,
     DynamicFormViewComponent,
     GridComponent,
+    TableDirective,
+    TableColumnDirective,
+    TableComponent
   ],
-  exports: [DynamicFormComponent, RepeaterComponent, DynamicFormViewComponent],
 })
 export class CommonUiModule {}

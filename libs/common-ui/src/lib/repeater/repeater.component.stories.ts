@@ -18,27 +18,29 @@ export default {
 
 const Template: Story<RepeaterComponent> = (args: RepeaterComponent) => ({
   props: args,
-  template: `<form #f="ngForm">
-  <tui-repeater #repeater ngModel name="userInput" [fields]="fields" > </tui-repeater>
-  <button (click)="repeater.add()">Add</button>
-  <p class="mt-3" >Form value: {{ f.value | json }}</p>
-                 </form>
-  `
+  // template: `<form #f="ngForm">
+  // <tui-repeater #repeater ngModel name="userInput" [fields]="fields" > </tui-repeater>
+  // <button (click)="repeater.add()">Add</button>
+  // <p class="mt-3" >Form value: {{ f.value | json }}</p>
+  //                </form>
+  // `
 });
 
 
 const fields: Field[] = [
   {
     "name": "item",
-    "type": "text"
+    "type": "input",
+    "inputType":"text",
   },
   {
-    "name": "qty",
-    "type": "number"
+      "name": "qty",
+      "type": "input",
+      "inputType":"number",
   },
   {
-    "name": "rate",
-    "type": "number"
+      "name": "rate",
+      "type": "select",
   }
 ];
 

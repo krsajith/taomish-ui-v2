@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Field, Page } from '../../page';
 
 @Component({
@@ -10,6 +10,7 @@ import { Field, Page } from '../../page';
 export class DynamicFormViewComponent {
   @Input() formGroup!:FormGroup;
   @Input() fields!:Field[];
+  @Input() gridCols!:string;
 
   optionData=[
     {

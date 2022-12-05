@@ -4,7 +4,7 @@ export interface Page {
     fields: Field[];
     sections: Section[];
     lists: { [key: string]: Option[] };
-    colSpan:string;
+    gridCols:string;
 }
 
 export interface Option {
@@ -28,7 +28,10 @@ export interface Field {
     type: string;
     inputType?:string;
     label?: string;
+    colSpan?:string;
+    customCssClass?:string;
     reference?: string;
+    validation?:Validation;
     store?:string;
     value?:string;
     fields?:Field[];
@@ -37,4 +40,11 @@ export interface Field {
 }
 
 
+export interface Validation{
+  min?:number;
+  max?:number;
+  required?:boolean;
+  maxLength?:number;
+  minLength?:number;
+}
 

@@ -7,12 +7,15 @@ import { GridCol } from './grid-model';
   styleUrls: ['./grid.component.css'],
 })
 export class GridComponent implements OnInit {
-  
+
   @ViewChild('grid', { static: true })
   private grid!: ElementRef<HTMLDivElement>;
 
   @Input() data!:Record<string, unknown>[];
   @Input() cols!:GridCol[];
+
+  @Input() stickyColFromStart=3
+  @Input() stickyColFromLast=2
 
   ngOnInit(): void {
     this.grid.nativeElement.style

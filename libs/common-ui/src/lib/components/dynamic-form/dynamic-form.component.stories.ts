@@ -21,11 +21,11 @@ export default {
 
 const Template: Story<DynamicFormComponent> = (args: DynamicFormComponent) => ({
     props: args,
-    template: `<form #f="ngForm">
-    <tui-form ngModel name="userInput" [page]="page" > </tui-form>
-    <p class="mt-3" >Form value: {{ f.value | json }}</p>
-                   </form>
-    `
+    // template: `<form #f="ngForm">
+    // <tui-form ngModel name="userInput" [page]="page" > </tui-form>
+    // <p class="mt-3" >Form value: {{ f.value | json }}</p>
+    //                </form>
+    // `
 });
 
 
@@ -37,20 +37,23 @@ const Template: Story<DynamicFormComponent> = (args: DynamicFormComponent) => ({
 
 
 const page: Page = {
-    "colSpan":"col-span-3",
+    "gridCols":"gid-cols-3",
     "formGroups": {
         "invoiceItem": [
             {
                 "name": "item",
-                "type": "text"
+                "type": "input",
+                "inputType":"text",
             },
             {
                 "name": "qty",
-                "type": "number"
+                "type": "input",
+                "inputType":"number",
             },
             {
                 "name": "rate",
-                "type": "number"
+                "type": "input",
+                "inputType":"date",
             }
         ]
     },
@@ -90,6 +93,7 @@ const page: Page = {
                     "name": "invoiceDate",
                     "label": "Invoice Date",
                     "type": "input",
+                    "colSpan":"col-span-2",
                     "inputType":"date",
                     "topic":"invoice-date.change"
                 },
@@ -98,6 +102,7 @@ const page: Page = {
                     "type": "inputGroup",
                     "label": "Invoice Date",
                     "reference": "amount",
+                    "customCssClass":"unit-input"
                     // "topicListener":[
                     //     { topic:"invoice-date.change" , function:"function1"}
                     // ]
@@ -111,6 +116,7 @@ const page: Page = {
                 {
                     "name": "items",
                     "type": "repeater",
+                    "colSpan":"col-span-3",
                     "reference": "invoiceItem"
                 }
             ]
@@ -120,5 +126,6 @@ const page: Page = {
 
 export const Primary = Template.bind({});
 Primary.args = {
-    page: page
+    page: page,
+    gridCols:page.gridCols
 };

@@ -1,5 +1,5 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import { FormArray, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { AbstractControl, FormArray, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
 import { BaseControlComponent } from '../base-control/base-control.component';
 import { DynamicFormService } from '../dynamic-form.service';
 import { Field } from '../page';
@@ -15,9 +15,14 @@ import { StoreService } from '../store/store.service';
       useExisting: forwardRef(() => RepeaterComponent),
       multi: true,
     },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: RepeaterComponent,
+      multi: true
+    }
   ],
 })
-export class RepeaterComponent extends BaseControlComponent implements OnInit {
+export class RepeaterComponent extends BaseControlComponent implements OnInit, Validator {
 
   @Input() fields!: Field[];
   @Input() minimumRows = 1;
@@ -26,15 +31,20 @@ export class RepeaterComponent extends BaseControlComponent implements OnInit {
     formArray: new FormArray([])
   })
 
-
   constructor(private storeService: StoreService, private dynamicFormService: DynamicFormService) {
     super();
   }
+
+  validate(control: AbstractControl<any, any>): ValidationErrors | null {
+    return this.parent.invalid?{ formArray :'invalid' }:null;
+  }
+
   ngOnInit(): void {
     console.log('oninit');
     this.formArray.valueChanges.subscribe(value=> this.onChange(value));
     this.addForm();
   }
+
   writeValue(obj: any): void {
     console.log('write value');
   }
@@ -43,7 +53,7 @@ export class RepeaterComponent extends BaseControlComponent implements OnInit {
     const form = this.dynamicFormService.buildFormGroupFromFields(this.fields);
     this.formArray.push(form)
     console.log(this.formArray);
-    
+
   }
 
   get formArray(): FormArray {

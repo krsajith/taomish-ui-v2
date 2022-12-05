@@ -1,1 +1,14 @@
-<taomish-ui-v2-nx-welcome></taomish-ui-v2-nx-welcome>
+<!-- <taomish-ui-v2-nx-welcome></taomish-ui-v2-nx-welcome> -->
+
+<tui-form [page]="page" [gridCols]="page.gridCols" (formGroupRef)="setFormGroup($event)"></tui-form>
+
+<div style="margin-top:2rem;" *ngIf="formGroup">
+  <button class="save-button" [ngClass]="{'active': formGroup.valid,'inactive': formGroup.invalid}" [disabled]="formGroup.invalid" (click)="save()">Save</button>
+</div>
+
+<!-- <div class="wrapper">
+  <div class="wrapper-div">aa</div>
+  <div class="wrapper-div-2">
+    <tui-table [headerList]="cols" [data]="data" [stickyColStart]="[0,1,2]"></tui-table>
+  </div>
+</div> -->

@@ -1,8 +1,13 @@
-<!-- {{fields | json}} -->
-<div class="pt-5" [formGroup]="parent">
+<div class="repeater-wrapper reverse">
+  <div [formGroup]="parent">
     <div formArrayName="formArray">
-        <ng-container *ngFor="let group of groups;let i=index">
-            <tui-dynamic-form-view  [formGroup]="group" [fields]="fields"></tui-dynamic-form-view>
-        </ng-container>
+      <ng-container *ngFor="let group of groups;let i=index">
+        <tui-dynamic-form-view [formGroup]="group" [fields]="fields" [gridCols]="'grid-cols-4'"></tui-dynamic-form-view>
+      </ng-container>
     </div>
+  </div>
+
+  <div>
+    <button (click)="add()" class="add-button ">Add New</button>
+  </div>
 </div>

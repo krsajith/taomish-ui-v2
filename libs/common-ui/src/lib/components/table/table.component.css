@@ -1,0 +1,26 @@
+table{
+  width: 50%;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+thead{
+  background-color: azure;
+  color: rgb(23, 146, 146);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+th,td{
+ padding: 0.6rem;
+  white-space: nowrap;
+  border-right: 1px solid gray;
+  border-bottom: 1px solid gray;
+
+}
+
+tr:hover{
+  background-color: rgb(187, 184, 184);
+}
+

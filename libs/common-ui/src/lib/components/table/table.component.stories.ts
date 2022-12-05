@@ -1,46 +1,50 @@
 import { moduleMetadata, Story, Meta } from '@storybook/angular';
-import { GridComponent } from './grid.component';
+import { TableColumnDirective } from '../../directives/table-column.directive';
+import { TableDirective } from '../../directives/table.directive';
+import { TableComponent } from './table.component';
 
 export default {
-  title: 'GridComponent',
-  component: GridComponent,
+  title: 'TableComponent',
+  component: TableComponent,
   decorators: [
     moduleMetadata({
-      imports: [],
+      imports: [TableColumnDirective,TableDirective],
     }),
   ],
-} as Meta<GridComponent>;
+} as Meta<TableComponent>;
 
-
-// "id": 1,
-// "email": "isidro_von@hotmail.com",
-// "first": "Torrey",
-// "last": "Veum",
-// "company": "Hilll, Mayert and Wolf",
-// "created_at": "2014-12-25T04:06:27.981Z",
-// "country": "Switzerland"
+const Template: Story<TableComponent> = (args: TableComponent) => ({
+  props: args,
+});
 
 const cols = [
   {
-    name:'id'
+    name:'id',
+    headerName:"Id"
   },
   {
-    name:'first'
+    name:'first',
+    headerName:"First"
   },
   {
-    name:'last'
+    name:'last',
+    headerName:"Last"
   },
   {
-    name:'email'
+    name:'email',
+    headerName:"Email"
   },
   {
-    name:'company'
+    name:'company',
+    headerName:"Company"
   },
   {
-    name:'created_at'
+    name:'created_at',
+    headerName:"Created Time"
   },
   {
-    name:'country'
+    name:'country',
+    headerName:"Country"
   }
 ]
 
@@ -2684,13 +2688,8 @@ const data = [
   }
 ];
 
-const Template: Story<GridComponent> = (args: GridComponent) => ({
-  props: args,
-  template: `<div style="width:50vw;height:50vh">  <tui-grid [cols]="cols" [data]="data"> </tui-grid> </div>`
-});
-
 export const Primary = Template.bind({});
 Primary.args = {
-  data:data,
-  cols:cols
+  headerList:cols,
+  data:data
 };

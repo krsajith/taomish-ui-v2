@@ -1,3 +1,4 @@
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { moduleMetadata, Story, Meta } from '@storybook/angular';
 import { DynamicFormViewComponent } from './dynamic-form-view.component';
 
@@ -6,7 +7,7 @@ export default {
   component: DynamicFormViewComponent,
   decorators: [
     moduleMetadata({
-      imports: [],
+      imports: [FormsModule,ReactiveFormsModule],
     }),
   ],
 } as Meta<DynamicFormViewComponent>;

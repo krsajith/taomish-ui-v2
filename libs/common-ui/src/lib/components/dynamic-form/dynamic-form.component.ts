@@ -1,6 +1,6 @@
 
-import { Component, forwardRef, Input, OnInit } from '@angular/core';
-import {  FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
+import {  AbstractControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
 import { StoreService } from '../../store/store.service';
 import { Store } from '../../store/store';
 
@@ -19,13 +19,20 @@ import { Field, Page } from '../../page';
       useExisting: forwardRef(() => DynamicFormComponent),
       multi: true,
     },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: DynamicFormComponent,
+      multi: true
+    }
   ],
 })
-export class DynamicFormComponent extends BaseControlComponent implements OnInit {
+export class DynamicFormComponent extends BaseControlComponent implements OnInit,Validator {
 
   @Input() page!: Page;
-
   @Input() fields!: Field[];
+  @Input() gridCols!:string;
+
+  @Output() formGroupRef=new EventEmitter;
 
   ready = false;
   formGroup!: FormGroup;
@@ -36,15 +43,29 @@ export class DynamicFormComponent extends BaseControlComponent implements OnInit
   constructor(private storeService: StoreService,private dynamicFormService:DynamicFormService) {
     super();
   }
+
   ngOnInit(): void {
     if(this.page) {
       this.fields = this.dynamicFormService.getFields(this.page);
+      if(!this.gridCols){
+        this.gridCols=this.page.gridCols
+      }
     }
+
     this.formGroup = this.dynamicFormService.buildFormGroup(this.fields);
     this.formGroup.valueChanges.subscribe(value=> this.onChange(value));
     this.ready=true;
+    this.formGroupRef.emit(this.formGroup)
     console.log(this.fields);
+  }
 
+
+  validate(control: AbstractControl<any, any>): ValidationErrors | null {
+    return this.formGroup.invalid?{formGroup:'Invalid'} : null;
+  }
+
+  getFormGroup():FormGroup{
+    return this.formGroup;
   }
 
   writeValue(obj: any): void {

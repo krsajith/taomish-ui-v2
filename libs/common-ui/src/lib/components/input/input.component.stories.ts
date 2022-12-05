@@ -19,5 +19,5 @@ const Template: Story<InputComponent> = (args: InputComponent) => ({
 
 export const Primary = Template.bind({});
 Primary.args = {
-  inputTypex:Constant.NUMBER
+  inputType:Constant.NUMBER
 };

@@ -18,7 +18,7 @@ import { Constant } from '../../domain/constant';
 })
 export class InputComponent extends BaseControlComponent implements OnInit {
 
-  @Input() inputTypex:any = Constant.NUMBER;
+  @Input() inputType:any = Constant.NUMBER;
   @Input() placeholder:any=''
 
   parent = new FormGroup({

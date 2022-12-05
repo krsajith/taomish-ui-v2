@@ -1,9 +1,12 @@
 <ng-container *ngIf="ready; else loading">
 
-  <tui-dynamic-form-view  [formGroup]="formGroup" [fields]="fields"></tui-dynamic-form-view>
+  <tui-dynamic-form-view [formGroup]="formGroup" [fields]="fields" [gridCols]="gridCols"></tui-dynamic-form-view>
 
-  </ng-container>
+</ng-container>
 
-  <ng-template #loading>Loading...</ng-template>
 
-  <!-- {{parentValues | a | json}} -->
+<ng-template #loading>Loading...</ng-template>
+
+<!-- {{formGroup.value | json}} -->
+
+<!-- {{formGroup.valid}} -->
