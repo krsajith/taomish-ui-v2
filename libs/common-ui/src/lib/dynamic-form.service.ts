@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { Page, Field, Validation } from './page';
+import { Page, Field, Validation, FieldStructure } from './page';
 import { Store } from './store/store';
 
 
@@ -18,20 +18,29 @@ export class DynamicFormService {
   }
 
   public getFields(page: Partial<Page>) {
-    let fields: Field[] = [...page.fields || []];
-    if (page.sections) {
-      page.sections.forEach(section => fields = [...fields, ...section.fields]);
-    }
-    fields.forEach(field=>{
-      if (field.type==='repeater' && field.reference && page.formGroups) {
-        field.fields = page.formGroups[field.reference];
-      }
+    let fieldStructure: FieldStructure[] = [];
 
-      if (field.type==='inputGroup' && field.reference && page.inputGroups) {
-        field.fields = page.inputGroups[field.reference];
-      }
-    });
-    return fields;
+    page.steps?.forEach(e=>{
+      let fields:Field[]=[...[]]
+        let obj:FieldStructure={stepName:e.stepName || '',fields:[]};
+
+        if (e.sections) {
+          e.sections.forEach(section => fields.push.apply(fields,section.fields) );
+        }
+        fields.forEach(field=>{
+          if (field.type==='repeater' && field.reference && page.formGroups) {
+            field.fields = page.formGroups[field.reference];
+          }
+
+          if (field.type==='inputGroup' && field.reference && page.inputGroups) {
+            field.fields = page.inputGroups[field.reference];
+          }
+        });
+        obj.fields=fields;
+        fieldStructure.push(obj)
+    })
+
+    return fieldStructure;
   }
 
   buildFormGroupFromFields(fields: Field[]): FormGroup {

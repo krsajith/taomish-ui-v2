@@ -7,20 +7,18 @@ import { DynamicFormComponent, Page } from '@taomish-ui-v2/common-ui';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent{
+export class AppComponent {
 
 
-  @ViewChild(DynamicFormComponent) form!:DynamicFormComponent
+  @ViewChild(DynamicFormComponent) form!: DynamicFormComponent
 
-  formGroup!:FormGroup
+  formGroup!: FormGroup
 
   title = 'ctrm';
 
-  setFormGroup(formGroup:FormGroup){
-    this.formGroup=formGroup;
+  setFormGroup(formGroup: FormGroup) {
+    this.formGroup = formGroup;
   }
-
-
 
   page: Page = {
     "gridCols": "grid-cols-3",
@@ -30,8 +28,8 @@ export class AppComponent{
           "name": "item",
           "type": "input",
           "inputType": "text",
-          "validation":{
-            "required":true
+          "validation": {
+            "required": true
           }
         },
         {
@@ -43,16 +41,16 @@ export class AppComponent{
           "name": "rate",
           "type": "input",
           "inputType": "date",
-          "validation":{
-            "required":true
+          "validation": {
+            "required": true
           },
         },
         {
           "name": "rate2",
           "type": "input",
           "inputType": "text",
-          "validation":{
-            "required":true
+          "validation": {
+            "required": true
           },
         },
       ]
@@ -63,18 +61,18 @@ export class AppComponent{
           "name": "amount",
           "type": "input",
           "inputType": "number",
-          "validation":{
-            "required":true,
-            "min":10,
-            "max":100
+          "validation": {
+            "required": true,
+            "min": 10,
+            "max": 100
           }
         },
         {
           "name": "currency",
           "type": "select",
           // "reference": "currencies",
-          "validation":{
-            "required":true
+          "validation": {
+            "required": true
           }
         }
       ]
@@ -85,77 +83,80 @@ export class AppComponent{
         { "value": "INR", "label": "INR" }
       ]
     },
-    "fields": [],
-    "sections": [
+    "steps": [
       {
-        "sectionName": "Invoice",
-        "index": 1,
-        "fields": [
+        "sections": [
           {
-            "name": "invoiceNumber",
-            "label": "Invoice Number",
-            "type": "input",
-            "inputType": "text",
-            "validation":{
-              "required":true
-            }
+            "sectionName": "Invoice",
+            "index": 1,
+            "fields": [
+              {
+                "name": "invoiceNumber",
+                "label": "Invoice Number",
+                "type": "input",
+                "inputType": "text",
+                "validation": {
+                  "required": true
+                }
+              },
+              {
+                "name": "invoiceDate",
+                "label": "Invoice Date",
+                "type": "input",
+                "inputType": "date",
+                "validation": {
+                  "required": true
+                },
+                "topic": "invoice-date.change"
+              },
+              {
+                "name": "amount",
+                "type": "inputGroup",
+                "label": "Invoice Date",
+                "reference": "amount",
+                "validation": {
+                  "required": true
+                },
+                "customCssClass": "unit-input"
+                // "topicListener":[
+                //     { topic:"invoice-date.change" , function:"function1"}
+                // ]
+              },
+              {
+                "name": "selectData",
+                "type": "select",
+                "label": "Invoice Date",
+                "validation": {
+                  "required": true
+                },
+                // "topicListener":[
+                //     { topic:"invoice-date.change" , function:"function1"}
+                // ]
+              }
+            ]
           },
           {
-            "name": "invoiceDate",
-            "label": "Invoice Date",
-            "type": "input",
-            "inputType": "date",
-            "validation":{
-              "required":true
-            },
-            "topic": "invoice-date.change"
+            "sectionName": "Items",
+            "index": 2,
+            "fields": [
+              {
+                "name": "items",
+                "type": "repeater",
+                "colSpan": "col-span-3",
+                "reference": "invoiceItem",
+                "validation": {
+                  "required": true
+                }
+              }
+            ]
           },
-          {
-            "name": "amount",
-            "type": "inputGroup",
-            "label": "Invoice Date",
-            "reference": "amount",
-            "validation":{
-              "required":true
-            },
-            "customCssClass": "unit-input"
-            // "topicListener":[
-            //     { topic:"invoice-date.change" , function:"function1"}
-            // ]
-          },
-          {
-            "name": "selectData",
-            "type": "select",
-            "label": "Invoice Date",
-            "validation":{
-              "required":true
-            },
-            // "topicListener":[
-            //     { topic:"invoice-date.change" , function:"function1"}
-            // ]
-          }
-        ]
-      },
-      {
-        "sectionName": "Items",
-        "index": 2,
-        "fields": [
-          {
-            "name": "items",
-            "type": "repeater",
-            "colSpan": "col-span-3",
-            "reference": "invoiceItem",
-            "validation":{
-              "required":true
-            }
-          }
         ]
       }
     ]
+
   }
 
-
- cols = [
+  cols = [
     {
       name: 'id',
       headerName: "Id"
@@ -186,7 +187,7 @@ export class AppComponent{
     }
   ]
 
- data = [
+  data = [
     {
       "id": 1,
       "email": "isidro_von@hotmail.com777777777777777777777777777777777777 777777777777777777 77777777777777777777 7777777777777777777777777",
@@ -450,8 +451,7 @@ export class AppComponent{
     }
   ];
 
-
-  save(){
+  save() {
     console.log(this.formGroup.value)
   }
 }

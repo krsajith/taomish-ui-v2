@@ -1,10 +1,16 @@
 export interface Page {
     formGroups: { [key: string]: Field[] };
     inputGroups: { [key: string]: Field[] };
-    fields: Field[];
-    sections: Section[];
+    steps:  Partial<Step>[];
     lists: { [key: string]: Option[] };
     gridCols:string;
+}
+
+export interface Step {
+  stepName:string;
+  icon:string;
+  index:number;
+  sections:Section[];
 }
 
 export interface Option {
@@ -48,3 +54,7 @@ export interface Validation{
   minLength?:number;
 }
 
+export interface FieldStructure{
+  stepName:string;
+  fields:Field[];
+}
