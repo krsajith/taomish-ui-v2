@@ -1,12 +1,20 @@
 <ng-container *ngIf="ready; else loading">
 
-  <tui-dynamic-form-view [formGroup]="formGroup" [fields]="fields" [gridCols]="gridCols"></tui-dynamic-form-view>
+  <ng-container *ngIf="page">
+    <ng-container *ngFor="let item of fieldStructure">
+      <tui-dynamic-form-view [formGroup]="getFormGroup(item.stepName)" [fields]="item.fields" [gridCols]="gridCols"></tui-dynamic-form-view>
+    </ng-container>
+  </ng-container>
+
+  <ng-container *ngIf="!page">
+    <tui-dynamic-form-view [formGroup]="formGroup" [fields]="fields" [gridCols]="gridCols"></tui-dynamic-form-view>
+  </ng-container>
 
 </ng-container>
 
 
 <ng-template #loading>Loading...</ng-template>
 
-<!-- {{formGroup.value | json}} -->
+{{formGroup.value | json}}
 
 <!-- {{formGroup.valid}} -->
