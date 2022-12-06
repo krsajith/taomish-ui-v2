@@ -1,20 +1,14 @@
 export interface Page {
     formGroups: { [key: string]: Field[] };
     inputGroups: { [key: string]: Field[] };
-    steps:  Partial<Step>[];
+    fields: Field[];
+    sections: Section[];
     lists: { [key: string]: Option[] };
 }
 
 export interface Option {
     value: string;
     label: string;
-}
-
-export interface Step {
-    stepName:string;
-    icon:string;
-    index:number;
-    sections:Section[];
 }
 
 export interface Section {

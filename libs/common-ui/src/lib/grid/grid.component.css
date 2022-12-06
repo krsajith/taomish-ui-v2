@@ -19,3 +19,12 @@
 .tui-grid .header {
     background-color: cornflowerblue;
 }
+
+.fixed-left-1 {
+    left:var(--fixed-left-1)
+}
+
+.fixed-left-2 {
+    left:var(--fixed-left-2)
+}
+

@@ -1,6 +1,10 @@
 <form class="invoice-form" [formGroup]="formGroup">
-    
-      <ng-container *ngFor="let field of fields; index as i" [ngSwitch]="field.type">
+
+    <!-- <ng-container *ngFor="let field of fields; index as i" [ngSwitch]="field.type"> //step 
+    <ng-container *ngFor="let field of fields; index as i" [ngSwitch]="field.type">    // section -->
+
+       <!-- <h3> {section.name} </h3> -->
+      <ng-container *ngFor="let field of section.fields; index as i" [ngSwitch]="field.type">
           <input  *ngSwitchCase="'text'"  formControlName="{{ field.name }}" type="text"/>
           <input  *ngSwitchCase="'number'"  formControlName="{{ field.name }}" type="number"/>
           <input  *ngSwitchCase="'date'"  formControlName="{{ field.name }}" type="date"/>

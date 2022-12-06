@@ -11,7 +11,7 @@ export default {
     component: DynamicFormComponent,
     decorators: [
         moduleMetadata({
-            declarations: [DynamicFormViewComponent, RepeaterComponent],
+            declarations: [DynamicFormViewComponent,RepeaterComponent],
             imports: [HttpClientModule, FormsModule, ReactiveFormsModule],
         }),
     ],
@@ -44,12 +44,12 @@ const page: Page = {
             {
                 "name": "qty",
                 "type": "number",
-                "topic": "invoiceItem.qty"
+                "topic":"invoiceItem.qty"
             },
             {
                 "name": "rate",
                 "type": "number",
-                "topic": "invoiceItem.rate"
+                "topic":"invoiceItem.rate"
             },
             {
                 "name": "total",
@@ -76,46 +76,42 @@ const page: Page = {
             { "value": "INR", "label": "INR" }
         ]
     },
-    "steps": [
+    "fields": [],
+    "sections": [
         {
-            "sections": [
+            "sectionName": "Invoice",
+            "index": 1,
+            "fields": [
                 {
-                    "sectionName": "Invoice",
-                    "index": 1,
-                    "fields": [
-                        {
-                            "name": "invoiceNumber",
-                            "label": "Invoice Number",
-                            "type": "text"
-                        },
-                        {
-                            "name": "invoiceDate",
-                            "label": "Invoice Date",
-                            "type": "date",
-                            "topic": "invoice-date.change"
-                        },
-                        {
-                            "name": "amount",
-                            "type": "inputGroup",
-                            "reference": "amount",
-                        }
-                    ]
+                    "name": "invoiceNumber",
+                    "label": "Invoice Number",
+                    "type": "text"
                 },
                 {
-                    "sectionName": "Items",
-                    "index": 2,
-                    "fields": [
-                        {
-                            "name": "items",
-                            "type": "repeater",
-                            "reference": "invoiceItem"
-                        }
-                    ]
+                    "name": "invoiceDate",
+                    "label": "Invoice Date",
+                    "type": "date",
+                    "topic":"invoice-date.change"
+                },
+                {
+                    "name": "amount",
+                    "type": "inputGroup",
+                    "reference": "amount",
                 }
             ]
-
+        },
+        {
+            "sectionName": "Items",
+            "index": 2,
+            "fields": [
+                {
+                    "name": "items",
+                    "type": "repeater",
+                    "reference": "invoiceItem"
+                }
+            ]
         }
-    ],
+    ]
 }
 
 export const Primary = Template.bind({});
