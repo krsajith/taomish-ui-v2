@@ -1,6 +1,6 @@
 
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
-import {  AbstractControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
+import {  AbstractControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';
 import { StoreService } from '../../store/store.service';
 import { Store } from '../../store/store';
 
@@ -39,6 +39,8 @@ export class DynamicFormComponent extends BaseControlComponent implements OnInit
   stores: { [k: string]: Store<any> } = {};
   values: { [k: string]: Observable<any> } = {};
   parentValueChanges: { [k: string]: Observable<string> } = {};
+  progressBarList:any[]=[]
+  activeForm:any="";
 
   fieldStructure:FieldStructure[]=[]
 
@@ -48,6 +50,10 @@ export class DynamicFormComponent extends BaseControlComponent implements OnInit
 
   ngOnInit(): void {
     if(this.page) {
+      this.activeForm=this.page.steps[0].stepName;
+      this.page.steps.forEach(e=>{
+        this.progressBarList.push({icon:e.icon, label:e.label,index:e.index,status:false,name:e.stepName})
+      })
       this.fieldStructure = this.dynamicFormService.getFields(this.page);
       if(!this.gridCols){
         this.gridCols=this.page.gridCols
@@ -56,16 +62,16 @@ export class DynamicFormComponent extends BaseControlComponent implements OnInit
 
     this.formGroup=new FormGroup({})
 
-    if(this.fields){
-      this.formGroup = this.dynamicFormService.buildFormGroup(this.fields);
-    }else{
+
+    if(this.fieldStructure.length>1){
       this.fieldStructure.forEach(e=>{
         this.formGroup.addControl(e.stepName,this.dynamicFormService.buildFormGroup(e.fields))
       })
+    }else{
+        this.fields=this.fields?this.fields:this.fieldStructure[0].fields;
+        this.formGroup = this.dynamicFormService.buildFormGroup(this.fields);
     }
-
-    // this.formGroup = this.dynamicFormService.buildFormGroup(this.fields);
-    // this.formGroup.valueChanges.subscribe(value=> this.onChange(value));
+    this.formGroup.valueChanges.subscribe(value=> this.onChange(value));
     this.ready=true;
     this.formGroupRef.emit(this.formGroup)
     console.log(this.formGroup);
@@ -86,5 +92,16 @@ export class DynamicFormComponent extends BaseControlComponent implements OnInit
 
   getFormGroup(fieldName:any):FormGroup{
     return this.formGroup.get(fieldName) as FormGroup
+  }
+
+  setIndex(steper:any){
+    if( steper.previousItemName!=undefined && this.getFormGroup(steper.previousItemName).invalid){
+      alert("Please enter requred fields");
+      return;
+    }
+    if(steper.currentIndex!==0 || steper.currentIndex==this.progressBarList,length-1){
+      this.progressBarList[steper.currentIndex-1].status=true;
+    }
+    this.activeForm=steper.currentItemName;
   }
 }

@@ -1,0 +1,8 @@
+<div style="width: 100%;">
+  <ul class="progressBar">
+    <ng-container *ngFor="let item of progressBarList;let i=index" >
+      <li (click)="tabClick(item,i)" class="label" [ngClass]="{'active': item.status,'inactive': !item.status}">{{item.label +" "+ item.status}}</li>
+      <div *ngIf="i<progressBarList.length-1" class="join-line"></div>
+    </ng-container>
+  </ul>
+</div>

@@ -36,92 +36,182 @@ const Template: Story<DynamicFormComponent> = (args: DynamicFormComponent) => ({
 
 
 
-const page: Page = {
-    "gridCols":"gid-cols-3",
-    "formGroups": {
-        "invoiceItem": [
-            {
-                "name": "item",
-                "type": "input",
-                "inputType":"text",
-            },
-            {
-                "name": "qty",
-                "type": "input",
-                "inputType":"number",
-            },
-            {
-                "name": "rate",
-                "type": "input",
-                "inputType":"date",
-            }
-        ]
-    },
-    "inputGroups": {
-        "amount": [
-            {
-                "name": "amount",
-                "type": "input",
-                "inputType":"numer"
-            },
-            {
-                "name": "currency",
-                "type": "select",
-                "reference": "currencies"
-            }
-        ]
-    },
-    "lists": {
-        "currencies": [
-            { "value": "USD", "label": "USD" },
-            { "value": "INR", "label": "INR" }
-        ]
-    },
-    "fields": [],
-    "sections": [
+const  page: Page = {
+  "gridCols": "grid-cols-3",
+  "formGroups": {
+    "invoiceItem": [
+      {
+        "name": "item",
+        "type": "input",
+        "inputType": "text",
+        "validation": {
+          "required": true
+        }
+      },
+      {
+        "name": "qty",
+        "type": "input",
+        "inputType": "number",
+      },
+      {
+        "name": "rate",
+        "type": "input",
+        "inputType": "date",
+        "validation": {
+          "required": true
+        },
+      },
+      {
+        "name": "rate2",
+        "type": "input",
+        "inputType": "text",
+        "validation": {
+          "required": true
+        },
+      },
+    ]
+  },
+  "inputGroups": {
+    "amount": [
+      {
+        "name": "amount",
+        "type": "input",
+        "inputType": "number",
+        "validation": {
+          "required": true,
+          "min": 10,
+          "max": 100
+        }
+      },
+      {
+        "name": "currency",
+        "type": "select",
+        // "reference": "currencies",
+        "validation": {
+          "required": true
+        }
+      }
+    ]
+  },
+  "lists": {
+    "currencies": [
+      { "value": "USD", "label": "USD" },
+      { "value": "INR", "label": "INR" }
+    ]
+  },
+  "steps": [
+    {
+      "stepName":"step1",
+      "sections": [
         {
-            "sectionName": "Invoice",
-            "index": 1,
-            "fields": [
-                {
-                    "name": "invoiceNumber",
-                    "label": "Invoice Number",
-                    "type": "input",
-                    "inputType":"text",
-                },
-                {
-                    "name": "invoiceDate",
-                    "label": "Invoice Date",
-                    "type": "input",
-                    "colSpan":"col-span-2",
-                    "inputType":"date",
-                    "topic":"invoice-date.change"
-                },
-                {
-                    "name": "amount",
-                    "type": "inputGroup",
-                    "label": "Invoice Date",
-                    "reference": "amount",
-                    "customCssClass":"unit-input"
-                    // "topicListener":[
-                    //     { topic:"invoice-date.change" , function:"function1"}
-                    // ]
-                }
-            ]
+          "sectionName": "Invoice",
+          "index": 1,
+          "fields": [
+            {
+              "name": "invoiceNumber",
+              "label": "Invoice Number",
+              "type": "input",
+              "inputType": "text",
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "name": "invoiceDate",
+              "label": "Invoice Date",
+              "type": "input",
+              "inputType": "date",
+              "validation": {
+                "required": true
+              },
+              "topic": "invoice-date.change"
+            },
+            {
+              "name": "amount",
+              "type": "inputGroup",
+              "label": "Invoice Date",
+              "reference": "amount",
+              "customCssClass": "unit-input"
+              // "topicListener":[
+              //     { topic:"invoice-date.change" , function:"function1"}
+              // ]
+            },
+            {
+              "name": "selectData",
+              "type": "select",
+              "label": "Invoice Date",
+              "validation": {
+                "required": true
+              },
+              // "topicListener":[
+              //     { topic:"invoice-date.change" , function:"function1"}
+              // ]
+            }
+          ]
         },
         {
-            "sectionName": "Items",
-            "index": 2,
-            "fields": [
-                {
-                    "name": "items",
-                    "type": "repeater",
-                    "colSpan":"col-span-3",
-                    "reference": "invoiceItem"
-                }
-            ]
-        }
-    ]
+          "sectionName": "Items",
+          "index": 2,
+          "fields": [
+            {
+              "name": "items",
+              "type": "repeater",
+              "colSpan": "col-span-3",
+              "reference": "invoiceItem",
+              "validation": {
+                "required": true
+              }
+            }
+          ]
+        },
+      ]
+    },
+
+    {
+      "stepName":"step2",
+      "sections": [
+        {
+          "sectionName": "Invoice",
+          "index": 1,
+          "fields": [
+            {
+              "name": "invoiceNumber2",
+              "label": "Invoice Number",
+              "type": "input",
+              "inputType": "text",
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "name": "price",
+              "label": "Invoice Date",
+              "type": "input",
+              "inputType": "number",
+              "validation": {
+                "required": true
+              },
+              "topic": "invoice-date.change"
+            },
+            {
+              "name": "amount",
+              "type": "select",
+              "label": "Invoice Date",
+            },
+            {
+              "name": "selectData",
+              "type": "select",
+              "label": "Invoice Date",
+              "validation": {
+                "required": true
+              },
+            }
+          ]
+        },
+      ]
+    },
+  ]
+
 }
 
 export const Primary = Template.bind({});

@@ -85,13 +85,17 @@ export class AppComponent {
     },
     "steps": [
       {
+        "stepName":"step3",
+        "index":0,
+        "status":false,
+        "label":"Step 3",
         "sections": [
           {
             "sectionName": "Invoice",
             "index": 1,
             "fields": [
               {
-                "name": "invoiceNumber",
+                "name": "invoiceNumber1",
                 "label": "Invoice Number",
                 "type": "input",
                 "inputType": "text",
@@ -100,7 +104,41 @@ export class AppComponent {
                 }
               },
               {
-                "name": "invoiceDate",
+                "name": "price1",
+                "label": "Invoice Date",
+                "type": "input",
+                "inputType": "number",
+                "validation": {
+                  "required": true
+                },
+                "topic": "invoice-date.change"
+              },
+            ]
+          },
+        ]
+      },
+
+      {
+        "stepName":"step1",
+        "index":1,
+        "status":false,
+        "label":"Step 1",
+        "sections": [
+          {
+            "sectionName": "Invoice",
+            "index": 1,
+            "fields": [
+              {
+                "name": "invoiceNumber2",
+                "label": "Invoice Number",
+                "type": "input",
+                "inputType": "text",
+                "validation": {
+                  "required": true
+                }
+              },
+              {
+                "name": "invoiceDate2",
                 "label": "Invoice Date",
                 "type": "input",
                 "inputType": "date",
@@ -110,20 +148,17 @@ export class AppComponent {
                 "topic": "invoice-date.change"
               },
               {
-                "name": "amount",
+                "name": "amount2",
                 "type": "inputGroup",
                 "label": "Invoice Date",
                 "reference": "amount",
-                "validation": {
-                  "required": true
-                },
                 "customCssClass": "unit-input"
                 // "topicListener":[
                 //     { topic:"invoice-date.change" , function:"function1"}
                 // ]
               },
               {
-                "name": "selectData",
+                "name": "selectData2",
                 "type": "select",
                 "label": "Invoice Date",
                 "validation": {
@@ -151,7 +186,56 @@ export class AppComponent {
             ]
           },
         ]
-      }
+      },
+
+      {
+        "stepName":"step2",
+        "index":2,
+        "status":false,
+        "label":"Step 2",
+        "sections": [
+          {
+            "sectionName": "Invoice",
+            "index": 1,
+            "fields": [
+              {
+                "name": "invoiceNumber3",
+                "label": "Invoice Number",
+                "type": "input",
+                "inputType": "text",
+                "validation": {
+                  "required": true
+                }
+              },
+              {
+                "name": "price3",
+                "label": "Invoice Date",
+                "type": "input",
+                "inputType": "number",
+                "validation": {
+                  "required": true
+                },
+                "topic": "invoice-date.change"
+              },
+              {
+                "name": "amount3",
+                "type": "select",
+                "label": "Invoice Date",
+              },
+              {
+                "name": "selectData3",
+                "type": "select",
+                "label": "Invoice Date",
+                "validation": {
+                  "required": true
+                },
+              }
+            ]
+          },
+        ]
+      },
+
+
     ]
 
   }
@@ -452,6 +536,7 @@ export class AppComponent {
   ];
 
   save() {
+
     console.log(this.formGroup.value)
   }
 }

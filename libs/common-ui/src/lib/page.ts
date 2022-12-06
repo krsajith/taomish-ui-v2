@@ -10,7 +10,9 @@ export interface Step {
   stepName:string;
   icon:string;
   index:number;
+  status:boolean;
   sections:Section[];
+  label:string;
 }
 
 export interface Option {

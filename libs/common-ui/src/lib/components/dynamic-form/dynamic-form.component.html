@@ -1,12 +1,13 @@
 <ng-container *ngIf="ready; else loading">
 
-  <ng-container *ngIf="page">
+  <ng-container *ngIf="fieldStructure.length>1">
+    <tui-stepper [progressBarList]="progressBarList" (progressIndex)="setIndex($event)"></tui-stepper>
     <ng-container *ngFor="let item of fieldStructure">
-      <tui-dynamic-form-view [formGroup]="getFormGroup(item.stepName)" [fields]="item.fields" [gridCols]="gridCols"></tui-dynamic-form-view>
+        <tui-dynamic-form-view *ngIf="activeForm==item.stepName" [formGroup]="getFormGroup(item.stepName)" [fields]="item.fields" [gridCols]="gridCols"></tui-dynamic-form-view>
     </ng-container>
   </ng-container>
 
-  <ng-container *ngIf="!page">
+  <ng-container *ngIf="fieldStructure.length<=1">
     <tui-dynamic-form-view [formGroup]="formGroup" [fields]="fields" [gridCols]="gridCols"></tui-dynamic-form-view>
   </ng-container>
 
@@ -16,5 +17,4 @@
 <ng-template #loading>Loading...</ng-template>
 
 {{formGroup.value | json}}
-
 <!-- {{formGroup.valid}} -->

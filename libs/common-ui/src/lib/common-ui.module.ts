@@ -15,6 +15,7 @@ import { GridComponent } from './components/grid/grid.component';
 import { TableComponent } from './components/table/table.component';
 import { TableDirective } from './directives/table.directive';
 import { TableColumnDirective } from './directives/table-column.directive';
+import { StepperComponent } from './components/stepper/stepper.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],
@@ -33,6 +34,7 @@ import { TableColumnDirective } from './directives/table-column.directive';
     TableComponent,
     TableDirective,
     TableColumnDirective,
+    StepperComponent,
   ],
   exports: [
     DynamicFormComponent,
@@ -41,7 +43,8 @@ import { TableColumnDirective } from './directives/table-column.directive';
     GridComponent,
     TableDirective,
     TableColumnDirective,
-    TableComponent
+    TableComponent,
+    StepperComponent
   ],
 })
 export class CommonUiModule {}
