@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { Store } from './core/store/store';
 import { Page, Field, Validation } from './page';
-import { Store } from './store/store';
 
 
 @Injectable({
@@ -29,7 +29,7 @@ export class DynamicFormService {
         field.fields = page.inputGroups[field.reference];
       }
     });
-    
+
     return fields;
   }
 

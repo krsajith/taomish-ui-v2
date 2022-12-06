@@ -1,7 +1,7 @@
 import { Component, EventEmitter, forwardRef, Input, Output } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { ApiService } from '../../api/api.service';
-import { BaseControlComponent } from '../../base-control/base-control.component';
+import { BaseControlComponent } from '../../core/base-control/base-control.component';
 
 @Component({
   selector: 'taomish-ui-v2-file-picker',

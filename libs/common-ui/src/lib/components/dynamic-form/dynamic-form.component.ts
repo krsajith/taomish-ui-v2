@@ -1,11 +1,10 @@
 
 import { Component, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import {  AbstractControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator, Validators } from '@angular/forms';
-import { StoreService } from '../../store/store.service';
-import { Store } from '../../store/store';
 
 import { Observable } from 'rxjs';
-import { BaseControlComponent } from '../../base-control/base-control.component';
+import { BaseControlComponent } from '../../core/base-control/base-control.component';
+import { Store } from '../../core/store/store';
 import { DynamicFormService } from '../../dynamic-form.service';
 import { Field, Page } from '../../page';
 
@@ -42,7 +41,7 @@ export class DynamicFormComponent extends BaseControlComponent implements OnInit
   progressBarList:any[]=[]
   activeForm:any="";
 
-  constructor(private storeService: StoreService,private dynamicFormService:DynamicFormService) {
+  constructor(private dynamicFormService:DynamicFormService) {
     super();
   }
 
@@ -58,6 +57,7 @@ export class DynamicFormComponent extends BaseControlComponent implements OnInit
         this.className=this.page.className
       }
     }
+
 
     this.formGroup = this.dynamicFormService.buildFormGroup(this.fields);
     this.formGroup.valueChanges.subscribe(value=> this.onChange(value));

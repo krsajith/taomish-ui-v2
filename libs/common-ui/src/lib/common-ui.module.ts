@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
-import { RepeaterComponent } from './repeater/repeater.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DynamicFormViewComponent } from './components/dynamic-form-view/dynamic-form-view.component';
@@ -16,6 +15,7 @@ import { TableComponent } from './components/table/table.component';
 import { TableDirective } from './directives/table.directive';
 import { TableColumnDirective } from './directives/table-column.directive';
 import { StepperComponent } from './components/stepper/stepper.component';
+import { RepeaterComponent } from './components/repeater/repeater.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],

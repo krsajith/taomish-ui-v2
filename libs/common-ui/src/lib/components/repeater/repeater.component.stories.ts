@@ -1,11 +1,11 @@
 import { moduleMetadata, Story, Meta } from '@storybook/angular';
-import { Field } from '../page';
 import { RepeaterComponent } from './repeater.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { DynamicFormViewComponent } from '../components/dynamic-form-view/dynamic-form-view.component';
-import { InputComponent } from '../components/input/input.component';
-import { SelectComponent } from '../components/select/select.component';
+import { SelectComponent } from '../select/select.component';
+import { InputComponent } from '../input/input.component';
+import { DynamicFormViewComponent } from '../dynamic-form-view/dynamic-form-view.component';
+import { Field } from '../../page';
 
 export default {
   title: 'RepeaterComponent',

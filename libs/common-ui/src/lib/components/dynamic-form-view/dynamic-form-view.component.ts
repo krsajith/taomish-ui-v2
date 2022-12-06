@@ -11,7 +11,8 @@ export class DynamicFormViewComponent {
   @Input() formGroup!:FormGroup;
   @Input() fields!:Field[];
   @Input() page!:Page;
-  
+  @Input() className!:string;
+
   optionData=[
     {
       label:"Label 1",

@@ -28,6 +28,7 @@ export class AppComponent {
           "name": "item",
           "type": "input",
           "inputType": "text",
+          "sectionName":"Sub Section 1",
           "validation": {
             "required": true
           }
@@ -48,14 +49,13 @@ export class AppComponent {
         {
           "name": "rate2",
           "type": "input",
+          "sectionName":"Sub Section 2",
           "inputType": "text",
           "validation": {
             "required": true
           },
         },
-      ],
-
-
+      ]
     },
     "inputGroups": {
       "amount": [
@@ -87,146 +87,109 @@ export class AppComponent {
     },
     "steps": [
       {
-        "stepName":"setp1",
-        "index":0,
-        "status":false,
-        "label":"Step 1",
-        "icon":"./icon/Active.svg",
-        "sections": [
+        "stepName": "step1",
+        "index": 1,
+        "status": false,
+        "label": "Step 1",
+        "fields": [
           {
-            "sectionName": "Invoice",
-            "index": 1,
-            "fields": [
-              {
-                "name": "invoiceNumber1",
-                "label": "Invoice Number",
-                "type": "input",
-                "inputType": "text",
-                "validation": {
-                  "required": true
-                }
-              },
-              {
-                "name": "price1",
-                "label": "Invoice Date",
-                "type": "input",
-                "inputType": "number",
-                "validation": {
-                  "required": true
-                },
-                "topic": "invoice-date.change"
-              },
-            ]
+            "name": "invoiceNumber2",
+            "label": "Invoice Number",
+            "type": "input",
+            "inputType": "text",
+            "sectionName":"Section 1",
+            "validation": {
+              "required": true
+            }
           },
           {
-            "sectionName": "Invoice",
-            "index": 1,
-            "fields": [
-              {
-                "name": "invoiceNumber2",
-                "label": "Invoice Number",
-                "type": "input",
-                "inputType": "text",
-                "validation": {
-                  "required": true
-                }
-              },
-              {
-                "name": "invoiceDate2",
-                "label": "Invoice Date",
-                "type": "input",
-                "inputType": "date",
-                "validation": {
-                  "required": true
-                },
-                "topic": "invoice-date.change"
-              },
-              {
-                "name": "amount2",
-                "type": "inputGroup",
-                "label": "Invoice Date",
-                "reference": "amount",
-                "customCssClass": "unit-input"
-                // "topicListener":[
-                //     { topic:"invoice-date.change" , function:"function1"}
-                // ]
-              },
-              {
-                "name": "selectData2",
-                "type": "select",
-                "label": "Invoice Date",
-                "validation": {
-                  "required": true
-                },
-                // "topicListener":[
-                //     { topic:"invoice-date.change" , function:"function1"}
-                // ]
-              }
-            ]
+            "name": "invoiceDate2",
+            "label": "Invoice Date",
+            "type": "input",
+            "inputType": "date",
+            "validation": {
+              "required": true
+            },
+            "topic": "invoice-date.change"
+          },
+          {
+            "name": "amount2",
+            "type": "inputGroup",
+            "label": "Invoice Date",
+            "reference": "amount",
+            "customCss": "unit-input"
+            // "topicListener":[
+            //     { topic:"invoice-date.change" , function:"function1"}
+            // ]
+          },
+          {
+            "name": "selectData2",
+            "type": "select",
+            "label": "Invoice Date",
+            "sectionName":"Section 2",
+            "validation": {
+              "required": true
+            },
+            // "topicListener":[
+            //     { topic:"invoice-date.change" , function:"function1"}
+            // ]
           },
         ]
       },
 
       {
-        "stepName":"step2",
-        "index":1,
-        "status":false,
-        "label":"Step 2",
-        "icon":"./assets/icon/Active.svg",
-        "sections": [
+        "stepName": "step2",
+        "index": 2,
+        "status": false,
+        "label": "Step 2",
+        "fields": [
           {
-            "sectionName": "Items",
-            "index": 2,
-            "fields": [
-              {
-                "name": "items",
-                "type": "repeater",
-                "colSpan": "col-span-3",
-                "reference": "invoiceItem",
-                "validation": {
-                  "required": true
-                }
-              }
-            ]
-          },
+            "name": "items",
+            "type": "repeater",
+            "colSpan": "col-span-3",
+            "reference": "invoiceItem",
+            "sectionName":"Section 3",
+            "validation": {
+              "required": true
+            }
+          }
         ]
       },
-
     ]
 
   }
 
   cols = [
     {
-      name:'id',
-      headerName:"Id",
-      class:"fixed-left"
+      name: 'id',
+      headerName: "Id",
+      class: "fixed-left"
     },
     {
-      name:'first',
-      headerName:"First"
+      name: 'first',
+      headerName: "First"
     },
     {
-      name:'last',
-      headerName:"Last"
+      name: 'last',
+      headerName: "Last"
     },
     {
-      name:'email',
-      headerName:"Email"
+      name: 'email',
+      headerName: "Email"
     },
     {
-      name:'company',
-      headerName:"Company"
+      name: 'company',
+      headerName: "Company"
     },
     {
-      name:'created_at',
-      headerName:"Created Time",
-      class:"fixed-right2"
+      name: 'created_at',
+      headerName: "Created Time",
+      class: "fixed-right2"
     },
     {
-      name:'country',
-      headerName:"Country",
-      class:"fixed-right"
+      name: 'country',
+      headerName: "Country",
+      class: "fixed-right"
     }
   ]
 

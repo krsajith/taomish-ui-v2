@@ -1,9 +1,8 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, ValidationErrors, Validator } from '@angular/forms';
-import { BaseControlComponent } from '../base-control/base-control.component';
-import { DynamicFormService } from '../dynamic-form.service';
-import { Field } from '../page';
-import { StoreService } from '../store/store.service';
+import { BaseControlComponent } from '../../core/base-control/base-control.component';
+import { DynamicFormService } from '../../dynamic-form.service';
+import { Field } from '../../page';
 
 @Component({
   selector: 'tui-repeater',
@@ -31,7 +30,7 @@ export class RepeaterComponent extends BaseControlComponent implements OnInit, V
     formArray: new FormArray([])
   })
 
-  constructor(private storeService: StoreService, private dynamicFormService: DynamicFormService) {
+  constructor(private dynamicFormService: DynamicFormService) {
     super();
   }
 

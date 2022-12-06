@@ -3,7 +3,7 @@ import { ControlValueAccessor } from '@angular/forms';
 import { BaseComponent } from '../base/base.component';
 
 @Component({
-  selector: 'tui-base-control',
+  selector: 'taomish-ui-base-control',
   template: '',
 })
 export abstract class BaseControlComponent extends BaseComponent implements ControlValueAccessor {

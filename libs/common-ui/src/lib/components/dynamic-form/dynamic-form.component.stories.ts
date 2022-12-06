@@ -4,9 +4,9 @@ import { DynamicFormViewComponent } from '../dynamic-form-view/dynamic-form-view
 import { HttpClientModule } from '@angular/common/http';
 import { Page } from '../../page';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RepeaterComponent } from '../../repeater/repeater.component';
 import { InputComponent } from '../input/input.component';
 import { SelectComponent } from '../select/select.component';
+import { RepeaterComponent } from '../repeater/repeater.component';
 
 export default {
     title: 'DynamicFormComponent',
@@ -44,6 +44,7 @@ const  page: Page = {
         "name": "item",
         "type": "input",
         "inputType": "text",
+        "sectionName":"Sub Section 1",
         "validation": {
           "required": true
         }
@@ -64,6 +65,7 @@ const  page: Page = {
       {
         "name": "rate2",
         "type": "input",
+        "sectionName":"Sub Section 2",
         "inputType": "text",
         "validation": {
           "required": true
@@ -101,132 +103,74 @@ const  page: Page = {
   },
   "steps": [
     {
-      "stepName":"step3",
-      "index":0,
-      "status":false,
-      "label":"Step 3",
-
-          "fields": [
-            {
-              "name": "invoiceNumber1",
-              "label": "Invoice Number 1",
-              "type": "input",
-              "inputType": "text",
-              "validation": {
-                "required": true
-              }
-            },
-            {
-              "name": "price1",
-              "label": "Invoice Date",
-              "type": "input",
-              "inputType": "number",
-              "validation": {
-                "required": true
-              },
-              "topic": "invoice-date.change"
-            },
-          ]
-    },
-
-    {
-      "stepName":"step1",
-      "index":1,
-      "status":false,
-      "label":"Step 1",
-          "fields": [
-            {
-              "name": "invoiceNumber2",
-              "label": "Invoice Number",
-              "type": "input",
-              "inputType": "text",
-              "validation": {
-                "required": true
-              }
-            },
-            {
-              "name": "invoiceDate2",
-              "label": "Invoice Date",
-              "type": "input",
-              "inputType": "date",
-              "validation": {
-                "required": true
-              },
-              "topic": "invoice-date.change"
-            },
-            {
-              "name": "amount2",
-              "type": "inputGroup",
-              "label": "Invoice Date",
-              "reference": "amount",
-              "customCssClass": "unit-input"
-              // "topicListener":[
-              //     { topic:"invoice-date.change" , function:"function1"}
-              // ]
-            },
-            {
-              "name": "selectData2",
-              "type": "select",
-              "label": "Invoice Date",
-              "validation": {
-                "required": true
-              },
-              // "topicListener":[
-              //     { topic:"invoice-date.change" , function:"function1"}
-              // ]
-            },
-            {
-              "name": "items",
-              "type": "repeater",
-              "colSpan": "col-span-3",
-              "reference": "invoiceItem",
-              "validation": {
-                "required": true
-              }
-            }
+      "stepName": "step1",
+      "index": 1,
+      "status": false,
+      "label": "Step 1",
+      "fields": [
+        {
+          "name": "invoiceNumber2",
+          "label": "Invoice Number",
+          "type": "input",
+          "inputType": "text",
+          "sectionName":"Section 1",
+          "validation": {
+            "required": true
+          }
+        },
+        {
+          "name": "invoiceDate2",
+          "label": "Invoice Date",
+          "type": "input",
+          "inputType": "date",
+          "validation": {
+            "required": true
+          },
+          "topic": "invoice-date.change"
+        },
+        {
+          "name": "amount2",
+          "type": "inputGroup",
+          "label": "Invoice Date",
+          "reference": "amount",
+          "customCss": "unit-input"
+          // "topicListener":[
+          //     { topic:"invoice-date.change" , function:"function1"}
+          // ]
+        },
+        {
+          "name": "selectData2",
+          "type": "select",
+          "label": "Invoice Date",
+          "sectionName":"Section 2",
+          "validation": {
+            "required": true
+          },
+          // "topicListener":[
+          //     { topic:"invoice-date.change" , function:"function1"}
+          // ]
+        },
       ]
     },
 
     {
-      "stepName":"step2",
-      "index":2,
-      "status":false,
-      "label":"Step 2",
-          "fields": [
-            {
-              "name": "invoiceNumber3",
-              "label": "Invoice Number",
-              "type": "input",
-              "inputType": "text",
-              "validation": {
-                "required": true
-              }
-            },
-            {
-              "name": "price3",
-              "label": "Invoice Date",
-              "type": "input",
-              "inputType": "number",
-              "validation": {
-                "required": true
-              },
-              "topic": "invoice-date.change"
-            },
-            {
-              "name": "amount3",
-              "type": "select",
-              "label": "Invoice Date",
-            },
-            {
-              "name": "selectData3",
-              "type": "select",
-              "label": "Invoice Date",
-              "validation": {
-                "required": true
-              },
-            }
-          ]
-        },
+      "stepName": "step2",
+      "index": 2,
+      "status": false,
+      "label": "Step 2",
+      "fields": [
+        {
+          "name": "items",
+          "type": "repeater",
+          "colSpan": "col-span-3",
+          "reference": "invoiceItem",
+          "sectionName":"Section 3",
+          "validation": {
+            "required": true
+          }
+        }
+      ]
+    },
   ]
 
 }

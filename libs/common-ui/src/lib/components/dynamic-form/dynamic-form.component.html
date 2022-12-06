@@ -1,7 +1,6 @@
 <ng-container *ngIf="ready; else loading">
-    <tui-dynamic-form-view [formGroup]="formGroup" [page]="page" [className]="className"></tui-dynamic-form-view>
+    <tui-dynamic-form-view [formGroup]="formGroup" [page]="page" [fields]="fields" [className]="className"></tui-dynamic-form-view>
 </ng-container>
-
 
 <ng-template #loading>Loading...</ng-template>
 

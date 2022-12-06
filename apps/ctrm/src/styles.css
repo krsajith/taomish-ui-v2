@@ -60,18 +60,18 @@
   --space-5: 0.75rem;
 
 
-  --font-weight-1: 400;
-  --font-weight-2: 500;
-  --font-weight-3: 600;
-  --font-weight-4: 700;
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-700: 700;
 
-  --font-size-1: 11px;
-  --font-size-2: 12px;
-  --font-size-3: 13px;
-  --font-size-4: 14px;
-  --font-size-5: 15px;
-  --font-size-6: 18px;
-  --font-size-7: 30px;
+  --font-size-11: 11px;
+  --font-size-12: 12px;
+  --font-size-13: 13px;
+  --font-size-14: 14px;
+  --font-size-15: 15px;
+  --font-size-18: 18px;
+  --font-size-30: 30px;
 
   --line-height-1: 12px;
   --line-height-2: 13px;
@@ -206,4 +206,15 @@ border-left: 1px solid var(--grey-5) !important;
 
 .col-span-3{
 grid-column: 1/4;
+}
+
+.section-div{
+  grid-column-start: 1;
+  grid-column-end: 5;
+  width: 100%;
+  font-size: var(--font-size-14);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-weight: var(--font-weight-600);
+  color: var(--grey-1);
 }

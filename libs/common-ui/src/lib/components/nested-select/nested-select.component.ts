@@ -1,7 +1,7 @@
 import { Component, ElementRef, forwardRef, Input, ViewChild } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { BaseControlComponent } from '../../base-control/base-control.component';
+import { BaseControlComponent } from '../../core/base-control/base-control.component';
 
 @Component({
   selector: 'taomish-ui-v2-nested-select',

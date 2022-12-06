@@ -1,7 +1,7 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
-import { BaseControlComponent } from '../../base-control/base-control.component';
 import { computePosition, flip } from '@floating-ui/dom';
+import { BaseControlComponent } from '../../core/base-control/base-control.component';
 
 @Component({
   selector: 'taomish-ui-v2-multi-select',

@@ -31,7 +31,7 @@ export interface Field {
     inputType?:string;
     label?: string;
     colSpan?:string;
-    customCssClass?:string;
+    customCss?:string;
     reference?: string;
     validation?:Validation;
     store?:string;

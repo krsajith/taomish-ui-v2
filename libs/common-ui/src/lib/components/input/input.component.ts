@@ -1,7 +1,7 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { takeUntil } from 'rxjs';
-import { BaseControlComponent } from '../../base-control/base-control.component';
+import { BaseControlComponent } from '../../core/base-control/base-control.component';
 import { Constant } from '../../domain/constant';
 
 @Component({

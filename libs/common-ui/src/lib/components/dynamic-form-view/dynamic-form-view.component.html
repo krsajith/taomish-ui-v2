@@ -1,4 +1,4 @@
-<form [formGroup]="formGroup" class="">
+<form [formGroup]="formGroup" class="{{className}}">
 
   <!-- <ng-container *ngFor="let item of items">
 
@@ -11,15 +11,14 @@
 
   <ng-container  *ngFor="let step of page?.steps || []; index as i" [ngTemplateOutlet]="fieldList"
   [ngTemplateOutletContext]="{fields:step.fields || fields || []}">
-
-
-
-    <div>{{step.stepName}}</div>
-
   </ng-container>
 
   <ng-template #fieldList let-fields='fields'>
     <ng-container *ngFor="let field of fields; index as i" [ngSwitch]="field.type">
+
+      <div class="section-div" *ngIf="field.sectionName">
+        {{field.sectionName}}
+      </div>
 
       <div class="{{field.colSpan}}">
 
@@ -32,7 +31,7 @@
           [fields]="field.fields || []"> </tui-repeater>
 
         <tui-form *ngSwitchCase="'inputGroup'" formControlName="{{ field.name }}" [fields]="field.fields || []"
-          [className]="field.customCssClass || ''"></tui-form>
+          [className]="field.customCss || ''"></tui-form>
 
       </div>
     </ng-container>
