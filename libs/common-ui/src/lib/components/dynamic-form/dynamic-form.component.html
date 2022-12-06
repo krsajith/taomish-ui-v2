@@ -1,15 +1,8 @@
 <ng-container *ngIf="ready; else loading">
-
-  <ng-container *ngIf="fieldStructure.length>1">
-    <tui-stepper [progressBarList]="progressBarList" (progressIndex)="setIndex($event)"></tui-stepper>
-    <ng-container *ngFor="let item of fieldStructure">
-        <tui-dynamic-form-view *ngIf="activeForm==item.stepName" [formGroup]="getFormGroup(item.stepName)" [fields]="item.fields" [gridCols]="gridCols"></tui-dynamic-form-view>
-    </ng-container>
-  </ng-container>
-
-  <ng-container *ngIf="fieldStructure.length<=1">
+    <div class="stepper" *ngIf="progressBarList.length>1">
+      <tui-stepper [progressBarList]="progressBarList"></tui-stepper>
+    </div>
     <tui-dynamic-form-view [formGroup]="formGroup" [fields]="fields" [gridCols]="gridCols"></tui-dynamic-form-view>
-  </ng-container>
 
 </ng-container>
 

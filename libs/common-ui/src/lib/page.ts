@@ -56,7 +56,3 @@ export interface Validation{
   minLength?:number;
 }
 
-export interface FieldStructure{
-  stepName:string;
-  fields:Field[];
-}

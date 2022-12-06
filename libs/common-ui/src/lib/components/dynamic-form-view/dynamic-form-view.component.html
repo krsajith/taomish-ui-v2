@@ -1,23 +1,27 @@
 <form [formGroup]="formGroup" class="{{gridCols}}">
-      <ng-container *ngFor="let field of fields; index as i" [ngSwitch]="field.type">
 
-        <div class="{{field.colSpan}}">
-          <!-- <input *ngSwitchCase="'input'"  [type]="field.inputType" class="input"> -->
+  <!-- <ng-container *ngFor="let item of items">
 
-          <tui-input *ngSwitchCase="'input'"  formControlName="{{ field.name }}" [inputType]="field.inputType" [placeholder]="field.label"></tui-input>
+  </ng-container> -->
 
-          <tui-select *ngSwitchCase="'select'" formControlName="{{ field.name }}" [optionData]="optionData"> </tui-select>
 
-          <!-- <select *ngSwitchCase="'select'" formControlName="{{ field.name }}">
-              <option value="one">one</option>
-              <option value="two">two</option>
-          </select> -->
+  <ng-container *ngFor="let field of fields; index as i" [ngSwitch]="field.type">
 
-          <tui-repeater class="items" *ngSwitchCase="'repeater'" formControlName="{{ field.name }}"   [fields]="field.fields || []" > </tui-repeater>
-          <tui-form *ngSwitchCase="'inputGroup'" formControlName="{{ field.name }}"    [fields]="field.fields || []" [gridCols]="field.customCssClass || ''"></tui-form>
+    <div class="{{field.colSpan}}">
 
-        </div>
+      <tui-input *ngSwitchCase="'input'" formControlName="{{ field.name }}" [inputType]="field.inputType"
+        [placeholder]="field.label"></tui-input>
 
-      </ng-container>
+      <tui-select *ngSwitchCase="'select'" formControlName="{{ field.name }}" [optionData]="optionData"> </tui-select>
 
-  </form>
+      <tui-repeater class="items" *ngSwitchCase="'repeater'" formControlName="{{ field.name }}"
+        [fields]="field.fields || []"> </tui-repeater>
+
+      <tui-form *ngSwitchCase="'inputGroup'" formControlName="{{ field.name }}" [fields]="field.fields || []"
+        [gridCols]="field.customCssClass || ''"></tui-form>
+
+    </div>
+
+  </ng-container>
+
+</form>

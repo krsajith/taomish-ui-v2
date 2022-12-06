@@ -1,4 +1,4 @@
-<table tuiTable>
+<!-- <table tuiTable>
   <thead>
     <ng-container *ngFor="let header of headerList;let i=index">
       <th  *ngIf="stickyColStart.includes(i)" tuiTableColumn>
@@ -21,4 +21,19 @@
       </ng-container>
     </tr>
   </tbody>
-</table>
+</table> -->
+
+
+<div class="grid-scroller">
+  <div class="grid" #grid>
+    <ng-container *ngFor="let item of headerList">
+     <div class="grid-header {{item.class}}">{{item.headerName}}</div>
+    </ng-container>
+
+    <ng-container *ngFor="let item of data">
+      <ng-container *ngFor="let col of headerList">
+        <div class="grid-entry {{col.class}}">{{item[col.name]}}</div>
+      </ng-container>
+    </ng-container>
+</div>
+    <!-- <div class="grid-entry placeholder">Placeholder</div> -->

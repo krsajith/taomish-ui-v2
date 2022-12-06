@@ -101,14 +101,17 @@ const  page: Page = {
   },
   "steps": [
     {
-      "stepName":"step1",
+      "stepName":"step3",
+      "index":0,
+      "status":false,
+      "label":"Step 3",
       "sections": [
         {
           "sectionName": "Invoice",
           "index": 1,
           "fields": [
             {
-              "name": "invoiceNumber",
+              "name": "invoiceNumber1",
               "label": "Invoice Number",
               "type": "input",
               "inputType": "text",
@@ -117,7 +120,41 @@ const  page: Page = {
               }
             },
             {
-              "name": "invoiceDate",
+              "name": "price1",
+              "label": "Invoice Date",
+              "type": "input",
+              "inputType": "number",
+              "validation": {
+                "required": true
+              },
+              "topic": "invoice-date.change"
+            },
+          ]
+        },
+      ]
+    },
+
+    {
+      "stepName":"step1",
+      "index":1,
+      "status":false,
+      "label":"Step 1",
+      "sections": [
+        {
+          "sectionName": "Invoice",
+          "index": 1,
+          "fields": [
+            {
+              "name": "invoiceNumber2",
+              "label": "Invoice Number",
+              "type": "input",
+              "inputType": "text",
+              "validation": {
+                "required": true
+              }
+            },
+            {
+              "name": "invoiceDate2",
               "label": "Invoice Date",
               "type": "input",
               "inputType": "date",
@@ -127,7 +164,7 @@ const  page: Page = {
               "topic": "invoice-date.change"
             },
             {
-              "name": "amount",
+              "name": "amount2",
               "type": "inputGroup",
               "label": "Invoice Date",
               "reference": "amount",
@@ -137,7 +174,7 @@ const  page: Page = {
               // ]
             },
             {
-              "name": "selectData",
+              "name": "selectData2",
               "type": "select",
               "label": "Invoice Date",
               "validation": {
@@ -169,13 +206,16 @@ const  page: Page = {
 
     {
       "stepName":"step2",
+      "index":2,
+      "status":false,
+      "label":"Step 2",
       "sections": [
         {
           "sectionName": "Invoice",
           "index": 1,
           "fields": [
             {
-              "name": "invoiceNumber2",
+              "name": "invoiceNumber3",
               "label": "Invoice Number",
               "type": "input",
               "inputType": "text",
@@ -184,7 +224,7 @@ const  page: Page = {
               }
             },
             {
-              "name": "price",
+              "name": "price3",
               "label": "Invoice Date",
               "type": "input",
               "inputType": "number",
@@ -194,12 +234,12 @@ const  page: Page = {
               "topic": "invoice-date.change"
             },
             {
-              "name": "amount",
+              "name": "amount3",
               "type": "select",
               "label": "Invoice Date",
             },
             {
-              "name": "selectData",
+              "name": "selectData3",
               "type": "select",
               "label": "Invoice Date",
               "validation": {
@@ -210,6 +250,8 @@ const  page: Page = {
         },
       ]
     },
+
+
   ]
 
 }

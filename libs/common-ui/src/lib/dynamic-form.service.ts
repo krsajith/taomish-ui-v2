@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { Page, Field, Validation, FieldStructure } from './page';
+import { Page, Field, Validation } from './page';
 import { Store } from './store/store';
 
 
@@ -18,29 +18,24 @@ export class DynamicFormService {
   }
 
   public getFields(page: Partial<Page>) {
-    let fieldStructure: FieldStructure[] = [];
+    let fields:Field[]=[]
 
     page.steps?.forEach(e=>{
-      let fields:Field[]=[...[]]
-        let obj:FieldStructure={stepName:e.stepName || '',fields:[]};
-
         if (e.sections) {
           e.sections.forEach(section => fields.push.apply(fields,section.fields) );
         }
-        fields.forEach(field=>{
-          if (field.type==='repeater' && field.reference && page.formGroups) {
-            field.fields = page.formGroups[field.reference];
-          }
-
-          if (field.type==='inputGroup' && field.reference && page.inputGroups) {
-            field.fields = page.inputGroups[field.reference];
-          }
-        });
-        obj.fields=fields;
-        fieldStructure.push(obj)
     })
 
-    return fieldStructure;
+    fields.forEach(field=>{
+      if (field.type==='repeater' && field.reference && page.formGroups) {
+        field.fields = page.formGroups[field.reference];
+      }
+      if (field.type==='inputGroup' && field.reference && page.inputGroups) {
+        field.fields = page.inputGroups[field.reference];
+      }
+    });
+
+    return fields;
   }
 
   buildFormGroupFromFields(fields: Field[]): FormGroup {
@@ -51,12 +46,8 @@ export class DynamicFormService {
         formControl.valueChanges.subscribe(value=> console.log(field.topic,value))
       }
       if(field.validation){
-        // this.addValidation(field.validation,formControl);
-        formControl.addValidators([Validators.required])
-
-        console.log("=============",field.name,formControl)
+        this.addValidation(field.validation,formControl);
       }
-
       formGroup.addControl(field.name, formControl);
     })
     return formGroup;
@@ -65,17 +56,17 @@ export class DynamicFormService {
   addValidation(validationList: Validation, formControl: FormControl) {
     const arr: any[] = []
     const customValidator:any[]=[]
-    if (validationList.maxLength) arr.push(Validators.maxLength(validationList.maxLength));
-    if (validationList.minLength) arr.push(Validators.minLength(validationList.minLength));
-    if (validationList.required) arr.push(Validators.required);
-    if (validationList.min) arr.push(Validators.min(validationList.min));
-    if (validationList.max) arr.push(Validators.max(validationList.max));
+    if (validationList.maxLength) arr.push(Validators.maxLength(validationList.maxLength))
+    if (validationList.minLength) arr.push(Validators.minLength(validationList.minLength))
+    if (validationList.required) arr.push(Validators.required)
+    if (validationList.min) arr.push(Validators.min(validationList.min))
+    if (validationList.max) arr.push(Validators.max(validationList.max))
     // if (validationList.customValidator){
     //   validationList.customValidator.forEach(e=>{
     //     if(e.functionKey=='unique')customValidator.push(CustomValidatorService.isUniqueFieldName(this.apiService,environment.apiEndpoint +e.url+localStorage.getItem('tenantId')+ `&facilityCode=`,this.page))
     //   })
     // }
     formControl.addValidators(arr);
-    // formControl.addAsyncValidators(customValidator)
+    formControl.addAsyncValidators(customValidator)
   }
 }

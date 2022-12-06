@@ -1,4 +1,4 @@
-table{
+/* table{
   width: 50%;
   max-height: 90vh;
   overflow: auto;
@@ -22,5 +22,68 @@ th,td{
 
 tr:hover{
   background-color: rgb(187, 184, 184);
+} */
+
+
+body  {
+  margin: 0;
 }
 
+.grid-scroller {
+  overflow: scroll;
+  height: 100vh;
+}
+
+.grid {
+  display: grid;
+  /* grid-template-columns: 100px 200px 200px 200px 200px 200px 200px ; */
+  /* width: 3900px; */
+  grid-template-columns: repeat(var(--var-col-count), auto)
+}
+
+.grid-entry, .grid-header {
+  padding: 7px;
+  background-color: white;
+  border-right: 1px solid gray;
+  border-bottom: 1px solid gray;
+}
+
+.grid-entry.last, .grid-header.last {
+  border-right: none;
+}
+
+.grid-header {
+  background-color: lightgray;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.grid-header.fixed-left {
+  z-index: 2;
+}
+
+.fixed-left {
+  position: sticky;
+  left: 0;
+}
+
+.fixed-right {
+  border-left: 1px solid gray;
+  border-right: none;
+  position: sticky;
+  right: 0;
+}
+
+.fixed-right2 {
+  border-left: 1px solid gray;
+  border-right: none;
+  position: sticky;
+  right: 200px;
+}
+
+.placeholder {
+  grid-column-start: 1;
+  grid-column-end: 21;
+  border-right: none;
+}

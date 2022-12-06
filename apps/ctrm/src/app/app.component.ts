@@ -53,7 +53,9 @@ export class AppComponent {
             "required": true
           },
         },
-      ]
+      ],
+
+
     },
     "inputGroups": {
       "amount": [
@@ -85,10 +87,11 @@ export class AppComponent {
     },
     "steps": [
       {
-        "stepName":"step3",
+        "stepName":"setp1",
         "index":0,
         "status":false,
-        "label":"Step 3",
+        "label":"Step 1",
+        "icon":"./icon/Active.svg",
         "sections": [
           {
             "sectionName": "Invoice",
@@ -115,15 +118,6 @@ export class AppComponent {
               },
             ]
           },
-        ]
-      },
-
-      {
-        "stepName":"step1",
-        "index":1,
-        "status":false,
-        "label":"Step 1",
-        "sections": [
           {
             "sectionName": "Invoice",
             "index": 1,
@@ -170,6 +164,16 @@ export class AppComponent {
               }
             ]
           },
+        ]
+      },
+
+      {
+        "stepName":"step2",
+        "index":1,
+        "status":false,
+        "label":"Step 2",
+        "icon":"./assets/icon/Active.svg",
+        "sections": [
           {
             "sectionName": "Items",
             "index": 2,
@@ -188,93 +192,48 @@ export class AppComponent {
         ]
       },
 
-      {
-        "stepName":"step2",
-        "index":2,
-        "status":false,
-        "label":"Step 2",
-        "sections": [
-          {
-            "sectionName": "Invoice",
-            "index": 1,
-            "fields": [
-              {
-                "name": "invoiceNumber3",
-                "label": "Invoice Number",
-                "type": "input",
-                "inputType": "text",
-                "validation": {
-                  "required": true
-                }
-              },
-              {
-                "name": "price3",
-                "label": "Invoice Date",
-                "type": "input",
-                "inputType": "number",
-                "validation": {
-                  "required": true
-                },
-                "topic": "invoice-date.change"
-              },
-              {
-                "name": "amount3",
-                "type": "select",
-                "label": "Invoice Date",
-              },
-              {
-                "name": "selectData3",
-                "type": "select",
-                "label": "Invoice Date",
-                "validation": {
-                  "required": true
-                },
-              }
-            ]
-          },
-        ]
-      },
-
-
     ]
 
   }
 
   cols = [
     {
-      name: 'id',
-      headerName: "Id"
+      name:'id',
+      headerName:"Id",
+      class:"fixed-left"
     },
     {
-      name: 'first',
-      headerName: "First"
+      name:'first',
+      headerName:"First"
     },
     {
-      name: 'last',
-      headerName: "Last"
+      name:'last',
+      headerName:"Last"
     },
     {
-      name: 'email',
-      headerName: "Email"
+      name:'email',
+      headerName:"Email"
     },
     {
-      name: 'company',
-      headerName: "Company"
+      name:'company',
+      headerName:"Company"
     },
     {
-      name: 'created_at',
-      headerName: "Created Time"
+      name:'created_at',
+      headerName:"Created Time",
+      class:"fixed-right2"
     },
     {
-      name: 'country',
-      headerName: "Country"
+      name:'country',
+      headerName:"Country",
+      class:"fixed-right"
     }
   ]
 
   data = [
     {
       "id": 1,
-      "email": "isidro_von@hotmail.com777777777777777777777777777777777777 777777777777777777 77777777777777777777 7777777777777777777777777",
+      "email": "isidro_von@hotmail.com",
       "first": "Torrey",
       "last": "Veum",
       "company": "Hilll, Mayert and Wolf",

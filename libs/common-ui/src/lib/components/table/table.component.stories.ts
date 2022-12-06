@@ -20,7 +20,8 @@ const Template: Story<TableComponent> = (args: TableComponent) => ({
 const cols = [
   {
     name:'id',
-    headerName:"Id"
+    headerName:"Id",
+    class:"fixed-left"
   },
   {
     name:'first',
@@ -40,18 +41,20 @@ const cols = [
   },
   {
     name:'created_at',
-    headerName:"Created Time"
+    headerName:"Created Time",
+    class:"fixed-right2"
   },
   {
     name:'country',
-    headerName:"Country"
+    headerName:"Country",
+    class:"fixed-right"
   }
 ]
 
 const data = [
   {
     "id": 1,
-    "email": "isidro_von@hotmail.com777777777777777777777777777777777777 777777777777777777 77777777777777777777 7777777777777777777777777",
+    "email": "isidro_von@hotmail.com7",
     "first": "Torrey",
     "last": "Veum",
     "company": "Hilll, Mayert and Wolf",
