@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { GridCol } from './grid-model';
+import { className } from './grid-model';
 
 @Component({
   selector: 'tui-grid',
@@ -12,7 +12,7 @@ export class GridComponent implements OnInit {
   private grid!: ElementRef<HTMLDivElement>;
 
   @Input() data!:Record<string, unknown>[];
-  @Input() cols!:GridCol[];
+  @Input() cols!:className[];
 
   @Input() stickyColFromStart=3
   @Input() stickyColFromLast=2

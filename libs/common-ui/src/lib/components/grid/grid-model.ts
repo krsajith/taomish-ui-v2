@@ -1,3 +1,3 @@
-export interface GridCol{
+export interface className{
     name:string
 }

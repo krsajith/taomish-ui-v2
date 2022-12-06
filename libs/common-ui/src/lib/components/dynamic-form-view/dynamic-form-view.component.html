@@ -1,27 +1,42 @@
-<form [formGroup]="formGroup" class="{{gridCols}}">
+<form [formGroup]="formGroup" class="">
 
   <!-- <ng-container *ngFor="let item of items">
 
   </ng-container> -->
 
+  <ng-container *ngIf="!page"  [ngTemplateOutlet]="fieldList"
+                [ngTemplateOutletContext]="{fields: fields || []}">
+  </ng-container>
 
-  <ng-container *ngFor="let field of fields; index as i" [ngSwitch]="field.type">
 
-    <div class="{{field.colSpan}}">
+  <ng-container  *ngFor="let step of page?.steps || []; index as i" [ngTemplateOutlet]="fieldList"
+  [ngTemplateOutletContext]="{fields:step.fields || fields || []}">
 
-      <tui-input *ngSwitchCase="'input'" formControlName="{{ field.name }}" [inputType]="field.inputType"
-        [placeholder]="field.label"></tui-input>
 
-      <tui-select *ngSwitchCase="'select'" formControlName="{{ field.name }}" [optionData]="optionData"> </tui-select>
 
-      <tui-repeater class="items" *ngSwitchCase="'repeater'" formControlName="{{ field.name }}"
-        [fields]="field.fields || []"> </tui-repeater>
-
-      <tui-form *ngSwitchCase="'inputGroup'" formControlName="{{ field.name }}" [fields]="field.fields || []"
-        [gridCols]="field.customCssClass || ''"></tui-form>
-
-    </div>
+    <div>{{step.stepName}}</div>
 
   </ng-container>
 
+  <ng-template #fieldList let-fields='fields'>
+    <ng-container *ngFor="let field of fields; index as i" [ngSwitch]="field.type">
+
+      <div class="{{field.colSpan}}">
+
+        <tui-input *ngSwitchCase="'input'" formControlName="{{ field.name }}" [inputType]="field.inputType"
+          [placeholder]="field.label"></tui-input>
+
+        <tui-select *ngSwitchCase="'select'" formControlName="{{ field.name }}" [optionData]="optionData"> </tui-select>
+
+        <tui-repeater class="items" *ngSwitchCase="'repeater'" formControlName="{{ field.name }}"
+          [fields]="field.fields || []"> </tui-repeater>
+
+        <tui-form *ngSwitchCase="'inputGroup'" formControlName="{{ field.name }}" [fields]="field.fields || []"
+          [className]="field.customCssClass || ''"></tui-form>
+
+      </div>
+    </ng-container>
+</ng-template>
+
 </form>
+

@@ -21,7 +21,7 @@ export class AppComponent {
   }
 
   page: Page = {
-    "gridCols": "grid-cols-3",
+    "className": "grid-cols-3",
     "formGroups": {
       "invoiceItem": [
         {

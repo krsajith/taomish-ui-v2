@@ -2,7 +2,7 @@
 
 
 
-<tui-form [page]="page" [gridCols]="page.gridCols" (formGroupRef)="setFormGroup($event)"></tui-form>
+<tui-form [page]="page" [className]="page.className" (formGroupRef)="setFormGroup($event)"></tui-form>
 
 <div style="margin-top:2rem;" *ngIf="formGroup">
   <button class="save-button" [ngClass]="{'active': formGroup.valid,'inactive': formGroup.invalid}" [disabled]="formGroup.invalid" (click)="save()">Save</button>

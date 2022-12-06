@@ -40,7 +40,7 @@ export class RepeaterComponent extends BaseControlComponent implements OnInit, V
   }
 
   ngOnInit(): void {
-    console.log('oninit');
+    console.log('RepeaterComponent',this.fields);
     this.formArray.valueChanges.subscribe(value=> this.onChange(value));
     this.addForm();
   }

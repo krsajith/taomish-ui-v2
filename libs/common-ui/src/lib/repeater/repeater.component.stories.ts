@@ -4,13 +4,15 @@ import { RepeaterComponent } from './repeater.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DynamicFormViewComponent } from '../components/dynamic-form-view/dynamic-form-view.component';
+import { InputComponent } from '../components/input/input.component';
+import { SelectComponent } from '../components/select/select.component';
 
 export default {
   title: 'RepeaterComponent',
   component: RepeaterComponent,
   decorators: [
     moduleMetadata({
-      declarations:[DynamicFormViewComponent],
+      declarations:[DynamicFormViewComponent,InputComponent,SelectComponent],
       imports: [HttpClientModule,FormsModule, ReactiveFormsModule ],
     }),
   ],

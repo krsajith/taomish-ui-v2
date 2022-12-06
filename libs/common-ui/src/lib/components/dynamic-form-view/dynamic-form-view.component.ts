@@ -10,8 +10,8 @@ import { Field, Page } from '../../page';
 export class DynamicFormViewComponent {
   @Input() formGroup!:FormGroup;
   @Input() fields!:Field[];
-  @Input() gridCols!:string;
-
+  @Input() page!:Page;
+  
   optionData=[
     {
       label:"Label 1",

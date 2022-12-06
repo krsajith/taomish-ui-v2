@@ -30,7 +30,7 @@ export class DynamicFormComponent extends BaseControlComponent implements OnInit
 
   @Input() page!: Page;
   @Input() fields!: Field[];
-  @Input() gridCols!:string;
+  @Input() className!:string;
 
   @Output() formGroupRef=new EventEmitter;
 
@@ -54,8 +54,8 @@ export class DynamicFormComponent extends BaseControlComponent implements OnInit
       })
 
       this.fields = this.dynamicFormService.getFields(this.page);
-      if(!this.gridCols){
-        this.gridCols=this.page.gridCols
+      if(!this.className){
+        this.className=this.page.className
       }
     }
 

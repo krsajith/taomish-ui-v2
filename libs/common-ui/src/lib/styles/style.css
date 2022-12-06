@@ -5,43 +5,43 @@
 }
 
 :root {
-  --primary-1: #CD3A3A;
-  --primary-2: #F26522;
-  --primary-3: #FF8200;
-  --primary-4: #EE9732;
-  --primary-5: #FFF2E3;
+  --primary-1: #cd3a3a;
+  --primary-2: #f26522;
+  --primary-3: #ff8200;
+  --primary-4: #ee9732;
+  --primary-5: #fff2e3;
 
-  --color-5: #91BC76;
-  --color-6: #32BCF3;
-  --color-7: #E3EFFF;
-  --color-8: #0059D3;
-  --color-9: #909AAD;
-  --color-10: #EBF0F9;
-  --color-11: #A7B6D4;
-  --color-12: #F2F4FF;
-  --color-13: #F3F4FF;
+  --color-5: #91bc76;
+  --color-6: #32bcf3;
+  --color-7: #e3efff;
+  --color-8: #0059d3;
+  --color-9: #909aad;
+  --color-10: #ebf0f9;
+  --color-11: #a7b6d4;
+  --color-12: #f2f4ff;
+  --color-13: #f3f4ff;
 
-  --color-14: #6D6B8B;
-  --color-15: #2C2860;
+  --color-14: #6d6b8b;
+  --color-15: #2c2860;
   --color-16: #171346;
-  --color-17: #15104E;
-  --color-18: #E5E3FD;
-  --color-19: #2D2660;
-  --color-20: #15094E;
+  --color-17: #15104e;
+  --color-18: #e5e3fd;
+  --color-19: #2d2660;
+  --color-20: #15094e;
 
-  --white: #FFFFFF;
-  --grey-16: #FCFCFC;
-  --grey-15: #FBFBFB;
-  --grey-14: #F7F7F7;
-  --grey-13: #F5F5F5;
-  --grey-12: #F2F2F2;
-  --grey-11: #EFEFEF;
-  --grey-10: #EBEBEB;
-  --grey-9: #DCDCDC;
-  --grey-8: #D9D9D9;
-  --grey-7: #CECECE;
-  --grey-6: #CDCDCD;
-  --grey-5: #A7A7A7;
+  --white: #ffffff;
+  --grey-16: #fcfcfc;
+  --grey-15: #fbfbfb;
+  --grey-14: #f7f7f7;
+  --grey-13: #f5f5f5;
+  --grey-12: #f2f2f2;
+  --grey-11: #efefef;
+  --grey-10: #ebebeb;
+  --grey-9: #dcdcdc;
+  --grey-8: #d9d9d9;
+  --grey-7: #cecece;
+  --grey-6: #cdcdcd;
+  --grey-5: #a7a7a7;
   --grey-4: #979797;
   --grey-3: #666666;
   --grey-2: #363636;
@@ -53,7 +53,6 @@
   --space-3: 0.625rem;
   --space-4: 0.6875rem;
   --space-5: 0.75rem;
-
 
   --font-weight-1: 400;
   --font-weight-2: 500;
@@ -82,9 +81,6 @@
   --drop-shadow-1: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.160784));
 }
 
-
-
-
 .box {
   width: 10rem;
   height: 7rem;
@@ -104,7 +100,6 @@
 .drop-shadow {
   filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.160784));
 }
-
 
 /* input {
     border: 1px solid var(--grey-5);
@@ -164,41 +159,41 @@ input:focus {
     background-color: #6D6B8B;
 } */
 
-.grid-cols-3{
+.grid-cols-3 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.5rem;
-  }
+}
 
-  .grid-cols-4{
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0.5rem 0.5rem;
-  }
+.grid-cols-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem 0.5rem;
+}
 
-  .unit-input{
+.unit-input {
   display: grid;
   grid-template-columns: 3fr 1fr;
   align-items: center;
   width: 100%;
   border: 1px solid var(--grey-5);
-  }
+}
 
-  .unit-input:hover{
-    border-color: var(--grey-1);
-  }
+.unit-input:hover {
+  border-color: var(--grey-1);
+}
 
-  .unit-input input{
-  border-width:0px !important ;
-  }
+.unit-input input {
+  border-width: 0px !important ;
+}
 
-  .unit-input .select-wrapper{
-  border:0px !important ;
-  border-top-left-radius:0px !important ;
-  border-bottom-left-radius:0px !important ;
+.unit-input .select-wrapper {
+  border: 0px !important ;
+  border-top-left-radius: 0px !important ;
+  border-bottom-left-radius: 0px !important ;
   border-left: 1px solid var(--grey-5) !important;
-  }
+}
 
-  .col-span-3{
+.col-span-3 {
   grid-column: 1/4;
-  }
+}

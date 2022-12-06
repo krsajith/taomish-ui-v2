@@ -2,7 +2,7 @@
   <div [formGroup]="parent">
     <div formArrayName="formArray">
       <ng-container *ngFor="let group of groups;let i=index">
-        <tui-dynamic-form-view [formGroup]="group" [fields]="fields" [gridCols]="'grid-cols-4'"></tui-dynamic-form-view>
+        <tui-dynamic-form-view [formGroup]="group" [fields]="fields" [className]="'grid-cols-4'"></tui-dynamic-form-view>
       </ng-container>
     </div>
   </div>

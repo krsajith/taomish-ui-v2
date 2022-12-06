@@ -3,7 +3,7 @@ export interface Page {
     inputGroups: { [key: string]: Field[] };
     steps:  Partial<Step>[];
     lists: { [key: string]: Option[] };
-    gridCols:string;
+    className:string;
 }
 
 export interface Step {
@@ -11,19 +11,13 @@ export interface Step {
   icon:string;
   index:number;
   status:boolean;
-  sections:Section[];
+  fields: Field[];
   label:string;
 }
 
 export interface Option {
     value: string;
     label: string;
-}
-
-export interface Section {
-    sectionName: string;
-    index: number;
-    fields: Field[];
 }
 
 export interface TopicListener {
@@ -45,6 +39,7 @@ export interface Field {
     fields?:Field[];
     topicListener?:TopicListener[];
     topic?:string;
+    sectionName?:string
 }
 
 

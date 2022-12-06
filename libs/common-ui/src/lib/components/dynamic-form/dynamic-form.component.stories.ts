@@ -37,7 +37,7 @@ const Template: Story<DynamicFormComponent> = (args: DynamicFormComponent) => ({
 
 
 const  page: Page = {
-  "gridCols": "grid-cols-3",
+  "className": "grid-cols-3",
   "formGroups": {
     "invoiceItem": [
       {
@@ -105,14 +105,11 @@ const  page: Page = {
       "index":0,
       "status":false,
       "label":"Step 3",
-      "sections": [
-        {
-          "sectionName": "Invoice",
-          "index": 1,
+
           "fields": [
             {
               "name": "invoiceNumber1",
-              "label": "Invoice Number",
+              "label": "Invoice Number 1",
               "type": "input",
               "inputType": "text",
               "validation": {
@@ -130,8 +127,6 @@ const  page: Page = {
               "topic": "invoice-date.change"
             },
           ]
-        },
-      ]
     },
 
     {
@@ -139,10 +134,6 @@ const  page: Page = {
       "index":1,
       "status":false,
       "label":"Step 1",
-      "sections": [
-        {
-          "sectionName": "Invoice",
-          "index": 1,
           "fields": [
             {
               "name": "invoiceNumber2",
@@ -183,13 +174,7 @@ const  page: Page = {
               // "topicListener":[
               //     { topic:"invoice-date.change" , function:"function1"}
               // ]
-            }
-          ]
-        },
-        {
-          "sectionName": "Items",
-          "index": 2,
-          "fields": [
+            },
             {
               "name": "items",
               "type": "repeater",
@@ -199,8 +184,6 @@ const  page: Page = {
                 "required": true
               }
             }
-          ]
-        },
       ]
     },
 
@@ -209,10 +192,6 @@ const  page: Page = {
       "index":2,
       "status":false,
       "label":"Step 2",
-      "sections": [
-        {
-          "sectionName": "Invoice",
-          "index": 1,
           "fields": [
             {
               "name": "invoiceNumber3",
@@ -248,10 +227,6 @@ const  page: Page = {
             }
           ]
         },
-      ]
-    },
-
-
   ]
 
 }
@@ -259,5 +234,5 @@ const  page: Page = {
 export const Primary = Template.bind({});
 Primary.args = {
     page: page,
-    gridCols:page.gridCols
+    className:page.className
 };

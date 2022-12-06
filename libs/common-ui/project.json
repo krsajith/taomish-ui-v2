@@ -46,7 +46,8 @@
         "outputDir": "dist/storybook/common-ui",
         "configDir": "libs/common-ui/.storybook",
         "browserTarget": "common-ui:build-storybook",
-        "compodoc": false
+        "compodoc": false,
+        "styles": ["libs/common-ui/src/lib/styles/style.css"]
       },
       "configurations": {
         "ci": {

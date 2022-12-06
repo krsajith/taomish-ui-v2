@@ -17,14 +17,9 @@ export class DynamicFormService {
     return this.buildFormGroupFromFields(fields);
   }
 
-  public getFields(page: Partial<Page>) {
+  public getFields(page: Partial<Page>):Field[] {
     let fields:Field[]=[]
-
-    page.steps?.forEach(e=>{
-        if (e.sections) {
-          e.sections.forEach(section => fields.push.apply(fields,section.fields) );
-        }
-    })
+    page.steps?.forEach(step=> fields.push(...step.fields || []))
 
     fields.forEach(field=>{
       if (field.type==='repeater' && field.reference && page.formGroups) {
@@ -34,7 +29,7 @@ export class DynamicFormService {
         field.fields = page.inputGroups[field.reference];
       }
     });
-
+    
     return fields;
   }
 
