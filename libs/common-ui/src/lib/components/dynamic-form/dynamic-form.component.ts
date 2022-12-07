@@ -24,7 +24,7 @@ import { Field, Page } from '../../page';
       useExisting: DynamicFormComponent,
       multi: true
     },
-    DynamicFormService
+    DynamicFormService,
   ],
 })
 export class DynamicFormComponent extends BaseControlComponent implements OnInit,Validator {

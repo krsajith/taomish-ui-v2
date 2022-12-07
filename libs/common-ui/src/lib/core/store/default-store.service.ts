@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { ApiService } from '../api/api.service';
 import { JsonService } from '../api/json.service';
 import { BasicApiStore } from './basic-api-store';
@@ -6,14 +6,11 @@ import { JsonStore } from './json-store';
 import { StoreType } from './stor-type';
 import { Store } from './store';
 import { StoreConfig } from './store-config';
-import { StoreService } from './store.service';
+import { StoreService } from './store-service';
 
 
-
-@Injectable({
-  providedIn: 'root'
-})
-export class DefaultStoreService implements StoreService {
+@Injectable()
+export class DefaultStoreService extends StoreService {
 
   stateObjects: { [k: string]: any } = {};
 
@@ -22,6 +19,7 @@ export class DefaultStoreService implements StoreService {
   stores: Map<string, Store<any>> = new Map();
 
   constructor(private jsonService: JsonService,private apiService:ApiService,private storeConfigs:Map<string,StoreConfig>) {
+    super()
   }
 
   getState<T extends Store<any>>(name: string,payloadFunctionFile?:{[key:string]:Function}): T {

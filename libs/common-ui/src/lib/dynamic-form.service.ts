@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EMPTY, from, Observable } from 'rxjs';
-import { DefaultStoreService } from './core/store/default-store.service';
 import { Store } from './core/store/store';
+import { StoreService } from './core/store/store-service';
 
 import { Page, Field, Validation } from './page';
 
@@ -16,7 +16,7 @@ export class DynamicFormService {
   values: { [k: string]: Observable<any> } = {};
   page!:Partial<Page>;
 
-  constructor(private storeService:DefaultStoreService){
+  constructor(private storeService:StoreService){
   }
 
   buildFormGroup(fields: Field[]): FormGroup {
