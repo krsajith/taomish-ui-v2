@@ -8,6 +8,7 @@ import { StoreConfigList } from './core/store-config-list';
   selector: 'taomish-ui-v2-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
+  providers:[{ provide: StoreConfigList, useValue: StoreConfigList} ]
 })
 export class AppComponent implements OnInit{
 
@@ -323,8 +324,6 @@ export class AppComponent implements OnInit{
   constructor(private jsonService:JsonService,private storeService:StoreService){}
 
   async ngOnInit(): Promise<void> {
-    this.storeService.setConfigFile(StoreConfigList)
-
     this.page = await firstValueFrom(this.jsonService.get<Page>(`./assets/application/pages/limits.json`));
   }
 

@@ -5,6 +5,7 @@ import {  AbstractControl, FormGroup, NG_VALIDATORS, NG_VALUE_ACCESSOR, Validati
 import { Observable } from 'rxjs';
 import { BaseControlComponent } from '../../core/base-control/base-control.component';
 import { Store } from '../../core/store/store';
+import { StoreConfig } from '../../core/store/store-config';
 import { DynamicFormService } from '../../dynamic-form.service';
 import { Field, Page } from '../../page';
 

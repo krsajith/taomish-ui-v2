@@ -20,24 +20,26 @@ export class StoreService {
 
   stores: Map<string, Store<any>> = new Map();
 
-  storeConfigs!:{ [k: string]: StoreConfig };
-
-  constructor(private jsonService: JsonService,private apiService:ApiService) {
+  constructor(private jsonService: JsonService,private apiService:ApiService,private storeConfigs:Map<string,StoreConfig>) {
   }
 
-  setConfigFile(storeConfigs:{ [k: string]: StoreConfig }){
+  setConfigFile(storeConfigs:Map<string,StoreConfig>){
     this.stores.clear();
     this.storeConfigs=storeConfigs;
   }
 
   getState<T extends Store<any>>(name: string,payloadFunctionFile?:{[key:string]:Function}): T {
-    if (!this.stores.has(name)) {
-      switch(this.storeConfigs[name].storeType) {
+    const config = this.storeConfigs.get(name);
+    if(!config) throw new Error(`Invalid store ${name}`);
+
+    
+    if (!this.stores.has(name) ) {
+      switch(config.storeType) {
         case StoreType.json:
-          this.stores.set(name, new JsonStore(this.storeConfigs[name],this.jsonService));
+          this.stores.set(name, new JsonStore(config,this.jsonService));
           break;
         case StoreType.api:
-          this.stores.set(name, new BasicApiStore(this.storeConfigs[name],this.apiService,payloadFunctionFile));
+          this.stores.set(name, new BasicApiStore(config,this.apiService,payloadFunctionFile));
       }
     }
     return this.stores.get(name) as T;

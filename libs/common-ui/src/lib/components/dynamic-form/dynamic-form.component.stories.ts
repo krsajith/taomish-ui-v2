@@ -7,6 +7,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from '../input/input.component';
 import { SelectComponent } from '../select/select.component';
 import { RepeaterComponent } from '../repeater/repeater.component';
+import { StoreConfig } from '../../core/store/store-config';
+import  storeConfigs  from '../../mock/store-config-list'
+
+
 
 export default {
     title: 'DynamicFormComponent',
@@ -15,6 +19,7 @@ export default {
         moduleMetadata({
             declarations: [DynamicFormViewComponent,RepeaterComponent,InputComponent,SelectComponent],
             imports: [HttpClientModule, FormsModule, ReactiveFormsModule],
+            providers:[{ provide: Map<string,StoreConfig>, useValue: storeConfigs} ]
         }),
     ],
 } as Meta<DynamicFormComponent>;
