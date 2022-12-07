@@ -35,6 +35,7 @@
   --color-20:#15094E;
 
   --white:#FFFFFF;
+  --gray-17:#767676;
   --grey-16:#FCFCFC;
   --grey-15:#FBFBFB;
   --grey-14:#F7F7F7;
@@ -170,15 +171,16 @@ input:focus {
 } */
 
 .grid-cols-3{
-display: grid;
-grid-template-columns: repeat(3, minmax(0, 1fr));
-gap: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: end;
 }
 
 .grid-cols-4{
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0.5rem 0.5rem;
+  gap: 1rem;
 }
 
 .unit-input{
@@ -209,12 +211,19 @@ grid-column: 1/4;
 }
 
 .section-div{
-  grid-column-start: 1;
-  grid-column-end: 5;
+  grid-column:  1/span 3;
   width: 100%;
   font-size: var(--font-size-14);
   padding-top: 1rem;
   padding-bottom: 1rem;
   font-weight: var(--font-weight-600);
   color: var(--grey-1);
+}
+
+.field-label{
+  position: relative;
+  font-size: var(--font-size-13);
+  font-weight: var(--font-weight-600);
+  color: var(--gray-17);
+  white-space: nowrap;
 }

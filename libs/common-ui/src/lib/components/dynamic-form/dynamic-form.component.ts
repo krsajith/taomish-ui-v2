@@ -22,7 +22,8 @@ import { Field, Page } from '../../page';
       provide: NG_VALIDATORS,
       useExisting: DynamicFormComponent,
       multi: true
-    }
+    },
+    DynamicFormService
   ],
 })
 export class DynamicFormComponent extends BaseControlComponent implements OnInit,Validator {
@@ -45,7 +46,7 @@ export class DynamicFormComponent extends BaseControlComponent implements OnInit
     super();
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     if(this.page) {
       this.activeForm=this.page.steps[0].stepName;
       this.page.steps.forEach(e=>{

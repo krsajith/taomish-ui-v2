@@ -1,163 +1,25 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { DynamicFormComponent, Page } from '@taomish-ui-v2/common-ui';
+import { DynamicFormComponent, JsonService, Page, StoreService } from '@taomish-ui-v2/common-ui';
+import { firstValueFrom } from 'rxjs';
+import { StoreConfigList } from './core/store-config-list';
 
 @Component({
   selector: 'taomish-ui-v2-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-
+export class AppComponent implements OnInit{
 
   @ViewChild(DynamicFormComponent) form!: DynamicFormComponent
 
   formGroup!: FormGroup
 
-  title = 'ctrm';
-
   setFormGroup(formGroup: FormGroup) {
     this.formGroup = formGroup;
   }
 
-  page: Page = {
-    "className": "grid-cols-3",
-    "formGroups": {
-      "invoiceItem": [
-        {
-          "name": "item",
-          "type": "input",
-          "inputType": "text",
-          "sectionName":"Sub Section 1",
-          "validation": {
-            "required": true
-          }
-        },
-        {
-          "name": "qty",
-          "type": "input",
-          "inputType": "number",
-        },
-        {
-          "name": "rate",
-          "type": "input",
-          "inputType": "date",
-          "validation": {
-            "required": true
-          },
-        },
-        {
-          "name": "rate2",
-          "type": "input",
-          "sectionName":"Sub Section 2",
-          "inputType": "text",
-          "validation": {
-            "required": true
-          },
-        },
-      ]
-    },
-    "inputGroups": {
-      "amount": [
-        {
-          "name": "amount",
-          "type": "input",
-          "inputType": "number",
-          "validation": {
-            "required": true,
-            "min": 10,
-            "max": 100
-          }
-        },
-        {
-          "name": "currency",
-          "type": "select",
-          // "reference": "currencies",
-          "validation": {
-            "required": true
-          }
-        }
-      ]
-    },
-    "lists": {
-      "currencies": [
-        { "value": "USD", "label": "USD" },
-        { "value": "INR", "label": "INR" }
-      ]
-    },
-    "steps": [
-      {
-        "stepName": "step1",
-        "index": 1,
-        "status": false,
-        "label": "Step 1",
-        "fields": [
-          {
-            "name": "invoiceNumber2",
-            "label": "Invoice Number",
-            "type": "input",
-            "inputType": "text",
-            "sectionName":"Section 1",
-            "validation": {
-              "required": true
-            }
-          },
-          {
-            "name": "invoiceDate2",
-            "label": "Invoice Date",
-            "type": "input",
-            "inputType": "date",
-            "validation": {
-              "required": true
-            },
-            "topic": "invoice-date.change"
-          },
-          {
-            "name": "amount2",
-            "type": "inputGroup",
-            "label": "Invoice Date",
-            "reference": "amount",
-            "customCss": "unit-input"
-            // "topicListener":[
-            //     { topic:"invoice-date.change" , function:"function1"}
-            // ]
-          },
-          {
-            "name": "selectData2",
-            "type": "select",
-            "label": "Invoice Date",
-            "sectionName":"Section 2",
-            "validation": {
-              "required": true
-            },
-            // "topicListener":[
-            //     { topic:"invoice-date.change" , function:"function1"}
-            // ]
-          },
-        ]
-      },
-
-      {
-        "stepName": "step2",
-        "index": 2,
-        "status": false,
-        "label": "Step 2",
-        "fields": [
-          {
-            "name": "items",
-            "type": "repeater",
-            "colSpan": "col-span-3",
-            "reference": "invoiceItem",
-            "sectionName":"Section 3",
-            "validation": {
-              "required": true
-            }
-          }
-        ]
-      },
-    ]
-
-  }
+  page!: Page;
 
   cols = [
     {
@@ -457,8 +319,16 @@ export class AppComponent {
     }
   ];
 
-  save() {
 
+  constructor(private jsonService:JsonService,private storeService:StoreService){}
+
+  async ngOnInit(): Promise<void> {
+    this.storeService.setConfigFile(StoreConfigList)
+
+    this.page = await firstValueFrom(this.jsonService.get<Page>(`./assets/application/pages/limits.json`));
+  }
+
+  save() {
     console.log(this.formGroup.value)
   }
 }

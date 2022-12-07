@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DynamicFormComponent } from './components/dynamic-form/dynamic-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DynamicFormViewComponent } from './components/dynamic-form-view/dynamic-form-view.component';
 import { InputComponent } from './components/input/input.component';
 import { SelectComponent } from './components/select/select.component';
@@ -16,6 +16,7 @@ import { TableDirective } from './directives/table.directive';
 import { TableColumnDirective } from './directives/table-column.directive';
 import { StepperComponent } from './components/stepper/stepper.component';
 import { RepeaterComponent } from './components/repeater/repeater.component';
+import { InterceptorInterceptor } from './core/interceptor/interceptor.interceptor';
 
 @NgModule({
   imports: [CommonModule, FormsModule, ReactiveFormsModule, HttpClientModule],
@@ -45,6 +46,13 @@ import { RepeaterComponent } from './components/repeater/repeater.component';
     TableColumnDirective,
     TableComponent,
     StepperComponent
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorInterceptor,
+      multi: true,
+    },
   ],
 })
 export class CommonUiModule {}

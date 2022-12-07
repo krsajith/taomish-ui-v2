@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { EMPTY, from, Observable } from 'rxjs';
 import { Store } from './core/store/store';
+import { StoreService } from './core/store/store.service';
 import { Page, Field, Validation } from './page';
 
 
@@ -12,6 +13,9 @@ export class DynamicFormService {
 
   stores: { [k: string]: Store<any> } = {};
   values: { [k: string]: Observable<any> } = {};
+  page!:Partial<Page>;
+
+  constructor(private storeService:StoreService){}
 
   buildFormGroup(fields: Field[]): FormGroup {
     return this.buildFormGroupFromFields(fields);
@@ -19,6 +23,7 @@ export class DynamicFormService {
 
   public getFields(page: Partial<Page>):Field[] {
     let fields:Field[]=[]
+    this.page=page;
     page.steps?.forEach(step=> fields.push(...step.fields || []))
 
     fields.forEach(field=>{
@@ -29,9 +34,33 @@ export class DynamicFormService {
         field.fields = page.inputGroups[field.reference];
       }
     });
-
     return fields;
   }
+
+  // addRepeater(fields:Field[]):Field[]{
+  //   fields.forEach(field=>{
+  //     if (field.type==='repeater' && field.reference && page.formGroups) {
+  //       field.fields = page.formGroups[field.reference];
+  //     }
+  //   });
+
+  //   return fields;
+  // }
+
+  // addGroup(fields:Field[]):Field[]{
+  //   fields.forEach(field=>{
+  //     if (field.type==='repeater' && field.reference && page.formGroups) {
+  //       field.fields = page.formGroups[field.reference];
+  //     }
+  //     if (field.type==='inputGroup' && field.reference && page.inputGroups) {
+  //       field.fields = page.inputGroups[field.reference];
+  //     }
+  //   });
+
+  //   return fields;
+  // }
+
+
 
   buildFormGroupFromFields(fields: Field[]): FormGroup {
     const formGroup = new FormGroup({});
@@ -42,6 +71,13 @@ export class DynamicFormService {
       }
       if(field.validation){
         this.addValidation(field.validation,formControl);
+      }
+      if (field.store) {
+        this.stores[field.name] = this.storeService.getState(field.store);
+        this.values[field.name] = field.parentField ? EMPTY : this.storeService.getState(field.store).optionsData;
+        if (field.globalIndicatorGroupName) {
+          this.values[field.name] = from(this.storeService.getState(field.store).filter(field.globalIndicatorGroupName))
+        }
       }
       formGroup.addControl(field.name, formControl);
     })
@@ -63,5 +99,13 @@ export class DynamicFormService {
     // }
     formControl.addValidators(arr);
     formControl.addAsyncValidators(customValidator)
+  }
+
+  public getFormFieldStore(): Promise<{ [k: string]: Store<any> }> {
+    return Promise.resolve(this.stores);
+  }
+
+  public getFormFieldValues(): Promise<{ [k: string]: Observable<any> }> {
+    return Promise.resolve(this.values)
   }
 }

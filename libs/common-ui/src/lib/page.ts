@@ -35,11 +35,13 @@ export interface Field {
     reference?: string;
     validation?:Validation;
     store?:string;
+    globalIndicatorGroupName?:string;
     value?:string;
     fields?:Field[];
     topicListener?:TopicListener[];
     topic?:string;
-    sectionName?:string
+    sectionName?:string;
+    parentField?:string;
 }
 
 

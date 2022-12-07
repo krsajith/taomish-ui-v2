@@ -1,3 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+* {
+  font-family: 'Raleway';
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -5,48 +10,49 @@
 }
 
 :root {
-  --primary-1: #cd3a3a;
-  --primary-2: #f26522;
-  --primary-3: #ff8200;
-  --primary-4: #ee9732;
-  --primary-5: #fff2e3;
+  --primary-1:#CD3A3A;
+  --primary-2:#F26522;
+  --primary-3:#FF8200;
+  --primary-4:#EE9732;
+  --primary-5:#FFF2E3;
 
-  --color-5: #91bc76;
-  --color-6: #32bcf3;
-  --color-7: #e3efff;
-  --color-8: #0059d3;
-  --color-9: #909aad;
-  --color-10: #ebf0f9;
-  --color-11: #a7b6d4;
-  --color-12: #f2f4ff;
-  --color-13: #f3f4ff;
+  --color-5:#91BC76;
+  --color-6:#32BCF3;
+  --color-7:#E3EFFF;
+  --color-8:#0059D3;
+  --color-9:#909AAD;
+  --color-10:#EBF0F9;
+  --color-11:#A7B6D4;
+  --color-12:#F2F4FF;
+  --color-13:#F3F4FF;
 
-  --color-14: #6d6b8b;
-  --color-15: #2c2860;
-  --color-16: #171346;
-  --color-17: #15104e;
-  --color-18: #e5e3fd;
-  --color-19: #2d2660;
-  --color-20: #15094e;
+  --color-14:#6D6B8B;
+  --color-15:#2C2860;
+  --color-16:#171346;
+  --color-17:#15104E;
+  --color-18:#E5E3FD;
+  --color-19:#2D2660;
+  --color-20:#15094E;
 
-  --white: #ffffff;
-  --grey-16: #fcfcfc;
-  --grey-15: #fbfbfb;
-  --grey-14: #f7f7f7;
-  --grey-13: #f5f5f5;
-  --grey-12: #f2f2f2;
-  --grey-11: #efefef;
-  --grey-10: #ebebeb;
-  --grey-9: #dcdcdc;
-  --grey-8: #d9d9d9;
-  --grey-7: #cecece;
-  --grey-6: #cdcdcd;
-  --grey-5: #a7a7a7;
-  --grey-4: #979797;
-  --grey-3: #666666;
-  --grey-2: #363636;
-  --grey-1: #333333;
-  --black: #000000;
+  --white:#FFFFFF;
+  --gray-17:#767676;
+  --grey-16:#FCFCFC;
+  --grey-15:#FBFBFB;
+  --grey-14:#F7F7F7;
+  --grey-13:#F5F5F5;
+  --grey-12:#F2F2F2;
+  --grey-11:#EFEFEF;
+  --grey-10:#EBEBEB;
+  --grey-9:#DCDCDC;
+  --grey-8:#D9D9D9;
+  --grey-7:#CECECE;
+  --grey-6:#CDCDCD;
+  --grey-5:#A7A7A7;
+  --grey-4:#979797;
+  --grey-3:#666666;
+  --grey-2:#363636;
+  --grey-1:#333333;
+  --black:#000000;
 
   --space-1: 0.3125rem;
   --space-2: 0.5rem;
@@ -54,18 +60,19 @@
   --space-4: 0.6875rem;
   --space-5: 0.75rem;
 
-  --font-weight-1: 400;
-  --font-weight-2: 500;
-  --font-weight-3: 600;
-  --font-weight-4: 700;
 
-  --font-size-1: 11px;
-  --font-size-2: 12px;
-  --font-size-3: 13px;
-  --font-size-4: 14px;
-  --font-size-5: 15px;
-  --font-size-6: 18px;
-  --font-size-7: 30px;
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-700: 700;
+
+  --font-size-11: 11px;
+  --font-size-12: 12px;
+  --font-size-13: 13px;
+  --font-size-14: 14px;
+  --font-size-15: 15px;
+  --font-size-18: 18px;
+  --font-size-30: 30px;
 
   --line-height-1: 12px;
   --line-height-2: 13px;
@@ -78,8 +85,11 @@
 
   --box-shadow-1: 0px 1px 10px rgba(0, 0, 0, 0.160784);
   --box-shadow-2: 0px 3px 3px rgba(0, 0, 0, 0.160784);
-  --drop-shadow-1: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.160784));
+  --drop-shadow-1:drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.160784));
 }
+
+
+
 
 .box {
   width: 10rem;
@@ -101,105 +111,119 @@
   filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.160784));
 }
 
+
 /* input {
-    border: 1px solid var(--grey-5);
-    outline: none;
-    border-radius: var(--radius);
-    padding: var(--space-3) var(--space-4) var(--space-3) var(--space-4);
-    color:var(--grey-1);
-    min-width: 4ch;
-    flex-grow: 1;
+  border: 1px solid var(--grey-5);
+  outline: none;
+  border-radius: var(--radius);
+  padding: var(--space-3) var(--space-4) var(--space-3) var(--space-4);
+  color:var(--grey-1);
+  min-width: 4ch;
+  flex-grow: 1;
 }
 
 input:focus {
-    border: 1px solid var(--color-20);
+  border: 1px solid var(--color-20);
 }
 
 
 .input-group {
-    display: flex;
-    border-radius: 4px;
-    border: 1px solid var(--color-20);
+  display: flex;
+  border-radius: 4px;
+  border: 1px solid var(--color-20);
 }
 
 .input-group  * {
-    border: none;
-    appearance: none;
+  border: none;
+  appearance: none;
 
 }
 
 .input-group  *:focus {
-    border: none;
-    appearance: none;
+  border: none;
+  appearance: none;
 
 }
 
 .input-group > *:first-child {
-    border-bottom-left-radius: 4px;
-    border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
 }
 
 .input-group > *:last-child {
-    border-bottom-right-radius: 4px;
-    border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
 }
 .input-group {
-    display: flex;
+  display: flex;
 }
 
 
 .invoice-form {
-    display: grid;
-    flex-direction: row;
-    gap: 1rem;
-    grid-template-columns: repeat(3,1fr);
+  display: grid;
+  flex-direction: row;
+  gap: 1rem;
+  grid-template-columns: repeat(3,1fr);
 }
 
 .invoice-form .items {
-    background-color: #6D6B8B;
+  background-color: #6D6B8B;
 } */
-
 
 .grid-cols-3{
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.5rem;
-  }
+  gap: 1rem;
+  align-items: end;
+}
 
-  .grid-cols-4{
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0.5rem 0.5rem;
-  }
-
-  .unit-input{
+.grid-cols-4{
   display: grid;
-  grid-template-columns: 3fr 1fr;
-  align-items: center;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.unit-input{
+display: grid;
+grid-template-columns: 3fr 1fr;
+align-items: center;
+width: 100%;
+border: 1px solid var(--grey-5);
+}
+
+.unit-input:hover{
+  border-color: var(--grey-1);
+}
+
+.unit-input input{
+border-width:0px !important ;
+}
+
+.unit-input .select-wrapper{
+border:0px !important ;
+border-top-left-radius:0px !important ;
+border-bottom-left-radius:0px !important ;
+border-left: 1px solid var(--grey-5) !important;
+}
+
+.col-span-3{
+grid-column: 1/4;
+}
+
+.section-div{
+  grid-column:  1/span 3;
   width: 100%;
-  border: 1px solid var(--grey-5);
-  }
+  font-size: var(--font-size-14);
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-weight: var(--font-weight-600);
+  color: var(--grey-1);
+}
 
-  .unit-input:hover{
-    border-color: var(--grey-1);
-  }
-
-  .unit-input input{
-  border-width:0px !important ;
-  }
-
-  .unit-input .select-wrapper{
-  border:0px !important ;
-  border-top-left-radius:0px !important ;
-  border-bottom-left-radius:0px !important ;
-  border-left: 1px solid var(--grey-5) !important;
-  }
-
-  .col-span-3{
-  grid-column: 1/4;
-  }
-
-  .section-div{
-    grid-column-start: 1;
-    grid-column-end: 21;
-  }
+.field-label{
+  position: relative;
+  font-size: var(--font-size-13);
+  font-weight: var(--font-weight-600);
+  color: var(--gray-17);
+  white-space: nowrap;
+}

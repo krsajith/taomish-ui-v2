@@ -22,10 +22,12 @@
 
       <div class="{{field.colSpan}}">
 
+        <span  class="field-label">{{field.label}}</span>
+
         <tui-input *ngSwitchCase="'input'" formControlName="{{ field.name }}" [inputType]="field.inputType"
           [placeholder]="field.label"></tui-input>
 
-        <tui-select *ngSwitchCase="'select'" formControlName="{{ field.name }}" [optionData]="optionData"> </tui-select>
+        <tui-select *ngSwitchCase="'select'" formControlName="{{ field.name }}" [optionData]="values[field.name] |async"> </tui-select>
 
         <tui-repeater class="items" *ngSwitchCase="'repeater'" formControlName="{{ field.name }}"
           [fields]="field.fields || []"> </tui-repeater>
