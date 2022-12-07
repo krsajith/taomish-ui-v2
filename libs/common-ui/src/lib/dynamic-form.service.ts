@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { EMPTY, from, Observable } from 'rxjs';
 import { Store } from './core/store/store';
-import { StoreService } from './core/store/store.service';
+import { StoreService } from './core/store/default-store.service';
 import { Page, Field, Validation } from './page';
 
 
