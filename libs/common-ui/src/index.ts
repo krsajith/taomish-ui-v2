@@ -24,3 +24,5 @@ export * from './lib/core/store/api-type';
 
 export * from './lib/core/store/default-store.service';
 
+export * from './lib/core/store/store.service';
+

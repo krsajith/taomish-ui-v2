@@ -1,19 +1,16 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { DynamicFormComponent, JsonService, Page, StoreService } from '@taomish-ui-v2/common-ui';
+import { DefaultStoreService, StoreServive, JsonService, Page } from '@taomish-ui-v2/common-ui';
 import { firstValueFrom } from 'rxjs';
-import { StoreConfigList } from './core/store-config-list';
+import storeConfigs from './core/store-config-list';
 
 @Component({
   selector: 'taomish-ui-v2-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers:[{ provide: StoreConfigList, useValue: StoreConfigList} ]
+  providers:[{ provide: storeConfigs, useValue: storeConfigs},{provide:StoreServive} ]
 })
 export class AppComponent implements OnInit{
-
-  @ViewChild(DynamicFormComponent) form!: DynamicFormComponent
-
   formGroup!: FormGroup
 
   setFormGroup(formGroup: FormGroup) {
@@ -321,7 +318,7 @@ export class AppComponent implements OnInit{
   ];
 
 
-  constructor(private jsonService:JsonService,private storeService:StoreService){}
+  constructor(private jsonService:JsonService,private defaultStoreService:DefaultStoreService){}
 
   async ngOnInit(): Promise<void> {
     this.page = await firstValueFrom(this.jsonService.get<Page>(`./assets/application/pages/limits.json`));

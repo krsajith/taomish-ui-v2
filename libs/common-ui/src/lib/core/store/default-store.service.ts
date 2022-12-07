@@ -24,16 +24,11 @@ export class DefaultStoreService implements StoreService {
   constructor(private jsonService: JsonService,private apiService:ApiService,private storeConfigs:Map<string,StoreConfig>) {
   }
 
-  setConfigFile(storeConfigs:Map<string,StoreConfig>){
-    this.stores.clear();
-    this.storeConfigs=storeConfigs;
-  }
-
   getState<T extends Store<any>>(name: string,payloadFunctionFile?:{[key:string]:Function}): T {
     const config = this.storeConfigs.get(name);
     if(!config) throw new Error(`Invalid store ${name}`);
 
-    
+
     if (!this.stores.has(name) ) {
       switch(config.storeType) {
         case StoreType.json:
